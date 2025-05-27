@@ -88,28 +88,69 @@
             <h2>Datos de Envío</h2>
             <form id="formularioEnvio">
               <div class="form-group">
-                <label for="nombre">Nombre completo</label>
-                <input type="text" id="nombre" required>
+                <label for="nombre">Nombre</label>
+                <input 
+                  type="text" 
+                  id="nombre" 
+                  name="nombre" 
+                  value="<?= isset($_SESSION['Nom']) ? htmlspecialchars($_SESSION['Nom']) : '' ?>" 
+                  required>
               </div>
           
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label for="direccion">Dirección</label>
                 <input type="text" id="direccion" required>
+              </div> -->
+              <div class="form-group">
+                <label for="direccion">Dirección</label>
+                <input 
+                  type="text" 
+                  id="direccion" 
+                  name="direccion" 
+                  value="<?= isset($_SESSION['Dir']) ? htmlspecialchars($_SESSION['Dir']) : '' ?>" 
+                  required>
               </div>
           
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label for="ciudad">Ciudad</label>
                 <input type="text" id="ciudad" required>
+              </div> -->
+              <div class="form-group">
+                <label for="ciudad">Ciudad</label>
+                <input 
+                  type="text" 
+                  id="ciudad" 
+                  name="ciudad" 
+                  value="<?= isset($_SESSION['Ciu']) ? htmlspecialchars($_SESSION['Ciu']) : '' ?>" 
+                  required>
               </div>
           
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label for="estado">Estado</label>
                 <input type="text" id="estado" required>
+              </div> -->
+              <div class="form-group">
+                <label for="estado">Estado</label>
+                <input 
+                  type="text" 
+                  id="estado" 
+                  name="estado" 
+                  value="<?= isset($_SESSION['Edo']) ? htmlspecialchars($_SESSION['Edo']) : '' ?>" 
+                  required>
               </div>
           
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label for="codigoPostal">Código Postal</label>
                 <input type="text" id="codigoPostal" required>
+              </div> -->
+              <div class="form-group">
+                <label for="codigoPostal">Código Postal</label>
+                <input 
+                  type="text" 
+                  id="codigoPostal" 
+                  name="codigoPostal" 
+                  value="<?= isset($_SESSION['Cp']) ? htmlspecialchars($_SESSION['Cp']) : '' ?>" 
+                  required>
               </div>
           
               <div class="form-group">

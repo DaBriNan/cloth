@@ -67,6 +67,10 @@ if(isset($_POST["submit"])) {
     session_start();
     $_SESSION["Id"] = $uidExists["usu_id"];
     $_SESSION["Nom"] = $uidExists["nombre"];
+    $_SESSION["Dir"] = $uidExists["direccion"];
+    $_SESSION["Ciu"] = $uidExists["ciudad"];
+    $_SESSION["Edo"] = $uidExists["estado"];
+    $_SESSION["Cp"] = $uidExists["cp"];
     header("location: ../../cloth/pages/produPrueba.php");
     exit();
 }

@@ -133,9 +133,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('checkoutBtn').addEventListener('click', () => {
 
-       // window.location.href = '/index1.html';
+       // window.location.href = '/index1.php';
 
-        window.location.href = 'Resumencompra.html';
+        window.location.href = 'ResumenCompra.php';
          //parent of a512f1a (checkout y pagos)
     });
 
