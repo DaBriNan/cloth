@@ -38,13 +38,13 @@
             <h2>Iniciar Sesión</h2>
             <form id="loginForm"  action="../backend/login.php" method="post">
                 <input type="text" name="usuario"  id="usuario" class="login-input" placeholder="Usuario" required>
-                <input type="password" name="contra" id="password" class="login-input" placeholder="Contraseña" required>
+                <input type="password" name="contra" id="contra" class="login-input" placeholder="Contraseña" required>
                 <button type="submit"  class="login-btn" name="submit">Iniciar Sesión</button>
                 <p id="errorLogin"></p>
             </form>
         </div>
     </div>
 
-    <script src="../assets/js/log.js"></script>
+    <!-- <script src="../assets/js/log.js"></script> -->
 </body>
 </html>

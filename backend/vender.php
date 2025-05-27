@@ -1,7 +1,5 @@
 <?php
-echo "aquiiii";
 if(isset($_POST["submit"])){
-    echo "aca";
     $producto         = $_POST["producto"];
     $precio           = $_POST["precio"];
     $descripcion      = $_POST["description"];

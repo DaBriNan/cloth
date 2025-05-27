@@ -39,37 +39,34 @@
 if(isset($_POST["submit"])) {
     $usr = $_POST["usuario"];
     $pwd = $_POST["contra"];
-
+    
     require_once 'conexion.php';
     require_once 'funciones.php';
-
+    
     // Validar campos vacíos
     $array = array($usr, $pwd);
-    if(isEmptyInput($array) === false) {
-
-        //header("location: ../../src/login/login.html?error=emptyinput");
-        
+    if(isEmptyInput($array) == true) {
+        header("location: ../../cloth/pages/login.php");
         exit();
     }
 
     // Buscar usuario
     $uidExists = uidExists($conexion, $usr);
     if(!$uidExists) {
-        //header("location: ../../src/login/login.html?error=wronglogin");
-        
+        header("location: ../../cloth/pages/login.php");
         exit();
     }
 
     // Comparar contraseña (texto plano)
     if($pwd !== $uidExists["contra"]) {
-        //header("location: ../../src/login/login.html?error=wronglogin");
+        header("location: ../../cloth/pages/login.php");
         exit();
     }
-
+    
     // Iniciar sesión
     session_start();
     $_SESSION["Id"] = $uidExists["usu_id"];
     $_SESSION["Nom"] = $uidExists["nombre"];
-    //header("location: ../../src/home/main.php");
+    header("location: ../../cloth/pages/produPrueba.php");
     exit();
 }

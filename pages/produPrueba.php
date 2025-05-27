@@ -45,6 +45,12 @@
     <a href="../pages/login.php" class="user">
         <img src="../assets/img/user.png" alt="login" class="imagen">
     </a>
+    <?php
+        session_start();
+        if(isset($_SESSION["Id"])){
+            echo $_SESSION["Nom"];
+        }
+     ?>
   </header>
 
 <body>
