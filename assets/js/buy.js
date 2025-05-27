@@ -132,7 +132,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.getElementById('checkoutBtn').addEventListener('click', () => {
-        window.location.href = '/index1.html';
+
+       // window.location.href = '/index1.html';
+
+        window.location.href = 'Resumencompra.html';
+         //parent of a512f1a (checkout y pagos)
     });
 
     // Modal de compra

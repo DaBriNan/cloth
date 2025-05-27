@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.getElementById('checkoutBtn').addEventListener('click', () => {
-        window.location.href = 'checkout.html';
+        window.location.href = 'Resumencompra.html';
     });
 
     // Modal de compra
