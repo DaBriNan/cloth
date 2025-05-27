@@ -28,13 +28,13 @@ body {
   
   
   .search-form {
-    position: relative;
+     position: relative;
     width: 3.75rem;
-    height: 3.75rem;
+    height: 2.5rem;  /* ← Cambiar de 3.75rem a 2.5rem */
     border-radius: 999px;
     background-color: white;
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
-    padding: 0.75rem;
+    padding: 0.5rem;  /* ← Cambiar de 0.75rem a 0.5rem */
     margin: 0 0.5rem;
     transition: width 0.5s;
   }
@@ -52,8 +52,8 @@ body {
   }
   
   .search-button {
-    width: 3rem;
-    height: 3rem;
+    width: 2rem;  /* ← Cambiar de 3rem a 2rem */
+    height: 2rem; /* ← Cambiar de 3rem a 2rem */
     border-radius: 999px;
     background-color: #059669;
     position: absolute;
@@ -86,7 +86,7 @@ body {
   }
   
   .active-search .search-button {
-    left: calc(100% - 2rem);
+     left: calc(100% - 1.5rem); 
   }
   
   .active-search .search-input {
@@ -772,4 +772,18 @@ a{
   }
 
   
-  
+/* Estado normal del corazón */
+.imagen-corazon {
+    width: 24px;
+    height: 24px;
+    transition: all 0.3s ease;
+}
+
+/* Estado activo (cuando hay favoritos) */
+.imagen-corazon.activo {
+    filter: brightness(0) saturate(100%) invert(25%) sepia(90%) saturate(5000%) hue-rotate(340deg);
+    /* Alternativa si prefieres cambiar la imagen: */
+    /* content: url('assets/img/Heart-red.png'); */
+}
+
+

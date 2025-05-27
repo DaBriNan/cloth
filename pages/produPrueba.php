@@ -10,8 +10,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="../assets/estilos/productos.css" />
      <link rel="stylesheet"  href="clotheS.css" >
-    <link rel="stylesheet"  href="productos.css" >
+    <!-- <link rel="stylesheet"  href="productos.css" > -->
     <title>Productos</title>
     <link rel="icon" type="image/x-icon" href="../assets/img/logoFinal.png">
     <style>

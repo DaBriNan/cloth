@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="/assets/img/logoFinal.png">
-    <link rel="stylesheet"  href="/assets/estilos/ResumenCompra.css" >
+    <link rel="icon" type="image/x-icon" href="../assets/img/logoFinal.png">
+    <link rel="stylesheet"  href="../assets/estilos/ResumenCompra.css" >
+    <link rel="stylesheet"  href="clotheS.css" >
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
     <title>ClothEeasy</title>
 
@@ -14,8 +18,8 @@
 <body>
 
     <header class="barra-menu">
-        <a href="./index.html">
-            <img src="/assets/img/logoFinal.png" class="imgMenu" alt="Inicio">
+        <a href="../index.html">
+            <img src="../assets/img/logoFinal.png" class="imgMenu" alt="Inicio">
         </a>
         <div class="container">
       
@@ -28,15 +32,16 @@
               </div>
             </form>
         </div>
-        <a href="/pages/vender.html" class="vender"><span class="texto">Vender</span></a>
-        <a href="/pages/productos.html" class="comprar"><span class="textoc">Comprar</span></a>
-        <a href="/pages/paraTi.html" class="paraTi"><span class="textop">Para ti</span></a>
-        <a href="/pages/meGusta.html" class="meGusta">
-          <img src="assets/img/Heart.png" alt="meGusta" class="imagen">
-      </a>
+       <a href="../pages/venderPrueba.php" class="vender"><span class="texto">Vender</span></a>
+        <a href="../pages/produPrueba.php" class="comprar"><span class="textoc">Comprar</span></a>
+        <a href="../pages/paraTiP.php" class="paraTi"><span class="textop">Para ti</span></a>
 
-        <a href="/pages/login.html" class="user">
-            <img src="/assets/img/user.png" alt="login" class="imagen">
+         <a href="../pages/meGusta.php" class="meGusta">
+            <img src="../assets/img/Heart.png" alt="meGusta" class="imagen">
+        </a>
+       
+        <a href="../pages/login.html" class="user">
+            <img src="../assets/img/user.png" alt="login" class="imagen">
         </a>
         
     </header>
@@ -113,11 +118,11 @@
         </div>
         
 
-    <script src="/assets/js/buy.js"></script>
-    <script src="/assets/js/compras.js"></script>
-    <script src="/assets/js/productos.js"></script>
-    <script src="/assets/js/meGusta.js"></script>
-    <script src="/assets/js/favs.js"></script>
+    <script src="../assets/js/buy.js"></script>
+    <script src="../assets/js/compras.js"></script>
+    <script src="../assets/js/productos.js"></script>
+    <script src="../assets/js/meGusta.js"></script>
+    <script src="../assets/js/favs.js"></script>
 
 
 </body>

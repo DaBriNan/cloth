@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="../assets/img/logoFinal.png">
-    <link rel="stylesheet" href="clotheS.css">
     <link rel="stylesheet"  href="../assets/estilos/vender.css" >
+    <link rel="stylesheet" href="clotheS.css">
+    
+    
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
     
@@ -157,8 +159,8 @@
    
 
     
-<script src="assets/js/vender.js"></script>
-<script src="assets/js/scrpitInicio.js"></script>
+<script src="../assets/js/vender.js"></script>
+<script src="../assets/js/scrpitInicio.js"></script>
 
 </body>
 </html>

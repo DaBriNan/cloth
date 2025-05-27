@@ -18,13 +18,15 @@
                 <button type="submit">Buscar</button>
             </form>
         </div>
-        <a href="../pages/vender.html" class="vender"><span class="texto">Vender</span></a>
-        <a href="../pages/compras.html" class="comprar"><span class="textoc">Comprar</span></a>
-        <a href="../pages/paraTi.html" class="paraTi"><span class="textop">Para ti</span></a>
-        <div class="meGusta">
+       <a href="../pages/venderPrueba.php" class="vender"><span class="texto">Vender</span></a>
+        <a href="../pages/produPrueba.php" class="comprar"><span class="textoc">Comprar</span></a>
+        <a href="../pages/paraTiP.php" class="paraTi"><span class="textop">Para ti</span></a>
+
+         <a href="../pages/meGusta.php" class="meGusta">
             <img src="../assets/img/Heart.png" alt="meGusta" class="imagen">
-        </div>
-        <a href="#" id="btnAbrirModal" class="user">
+        </a>
+       
+        <a href="../pages/logIn.php" class="user">
             <img src="../assets/img/user.png" alt="login" class="imagen">
         </a>
     </header>
