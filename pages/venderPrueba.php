@@ -87,7 +87,7 @@
         <section class="resumen">
             <h1>Vista Previa</h1>
             <div class="preview">
-                <img src="../assets/img/polo.png" alt="Vista previa del producto" >
+                <img src="" alt="Vista previa del producto" >
                 <p><strong>Precio:</strong> <span id="precioPreview">$0.00</span></p>
                 <p><strong>Talla:</strong> <span id="tallaPreview">N/A</span></p>
             </div>
