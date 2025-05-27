@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="/assets/img/logoFinal.png">
-    <link rel="stylesheet" href="/assets/estilos/login.css">
+    <link rel="icon" type="image/x-icon" href="../assets/img/logoFinal.png">
+    <link rel="stylesheet" href="../assets/estilos/login.css">
     <title>Log In</title>
 </head>
 <body>
     <header class="barra-menu">
-        <a href="/index.html">
-            <img src="/assets/img/logoFinal.png" class="imgMenu" alt="Inicio">
+        <a href="./index.html">
+            <img src="../assets/img/logoFinal.png" class="imgMenu" alt="Inicio">
         </a>
         <div class="barra">
             <form class="search-bar" action="/buscar" method="get">
@@ -18,14 +18,14 @@
                 <button type="submit">Buscar</button>
             </form>
         </div>
-        <a href="/pages/vender.html" class="vender"><span class="texto">Vender</span></a>
-        <a href="/pages/compras.html" class="comprar"><span class="textoc">Comprar</span></a>
-        <a href="/pages/paraTi.html" class="paraTi"><span class="textop">Para ti</span></a>
+        <a href="../pages/vender.html" class="vender"><span class="texto">Vender</span></a>
+        <a href="../pages/compras.html" class="comprar"><span class="textoc">Comprar</span></a>
+        <a href="../pages/paraTi.html" class="paraTi"><span class="textop">Para ti</span></a>
         <div class="meGusta">
-            <img src="/assets/img/Heart.png" alt="meGusta" class="imagen">
+            <img src="../assets/img/Heart.png" alt="meGusta" class="imagen">
         </div>
         <a href="#" id="btnAbrirModal" class="user">
-            <img src="/assets/img/user.png" alt="login" class="imagen">
+            <img src="../assets/img/user.png" alt="login" class="imagen">
         </a>
     </header>
 
@@ -43,6 +43,6 @@
         </div>
     </div>
 
-    <script src="/assets/js/log.js"></script>
+    <script src="../assets/js/log.js"></script>
 </body>
 </html>
