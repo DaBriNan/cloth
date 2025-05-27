@@ -145,58 +145,34 @@
     background-color: #4f59c9;
 }
 
-.vender {
+.vender,
+.comprar,
+.paraTi {
     display: inline-block;
-    
-    border-radius: 25px;
-    background-color: #6A65C6;
-    padding: 2px 3px;
-    padding-left:2%;
+    border-radius: 20px;
+    padding: 4px 12px; 
 }
 
-.vender .texto {
-    color: #FFF;
-    font-family: Outfit;
-    font-size: 26px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
+.vender {
+    padding-left: 3%;
+    background-color: #6A65C6;
 }
 
 .comprar {
-    display: inline-block;
-    /* Para que el fondo se ajuste al contenido */
-    border-radius: 25px;
     background-color: #008CCA;
-    padding: 2px 10px;
-    /* Aumentar padding para agrandar el fondo */
-}
-
-.comprar .textoc {
-    color: #FFF;
-    font-family: Outfit;
-    font-size: 26px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
 }
 
 .paraTi {
-    display: inline-block;
-    /* Para que el fondo se ajuste al contenido */
-    border-radius: 25px;
     background-color: #3F5A05;
-    padding: 2px 10px;
-    /* Aumentar padding para agrandar el fondo */
 }
 
+.vender .texto,
+.comprar .textoc,
 .paraTi .textop {
-    color: #FFF;
+    font-size: 18px; 
     font-family: Outfit;
-    font-size: 26px;
-    font-style: normal;
     font-weight: 500;
-    line-height: normal;
+    color: white;
 }
 
 /*lista debajo de la barra de menu*/
