@@ -114,6 +114,7 @@
                   const container = document.getElementById('productosContainer');
 
                   apiResult.forEach((result, idx) => {
+                    
                     //adaptar a tu codigo
                       const content = `
                       <div class="producto" data-id=${result.categoriaP}>
@@ -123,8 +124,7 @@
                           <p> ${result.tallaP}</p>
                           <p class="descripcion">${result.descripcionDeProducto}</p>
                           <button class="btn-megusta" >❤️</button>
-                          <button onclick="addToCart(${result.categoriaP}, '../assets/img${result.rutaImagen}',
-                           ${result.nombreProducto},${result.precioP},  ${result.tallaP})">Comprar</button>
+                          <button onclick="addToCart(${result.categoriaP}, '${result.nombreProducto}', '${result.precioP}', '../assets/img/${result.rutaImagen}')">Comprar</button>
                       </div>
                       `;
 
