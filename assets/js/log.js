@@ -26,8 +26,31 @@ document.addEventListener("DOMContentLoaded", () => {
     loginForm.addEventListener("submit", async (e) => {
         e.preventDefault();
 
+        const formData = new FormData(loginForm);
+
+        try {
+            const response = await fetch(loginForm.action, {
+                method: "POST",
+                body: formData
+                // No pongas headers: fetch ya gestiona correctamente el Content-Type
+            });
+    
+            const text = await response.text(); // porque ahora no esperas JSON
+    
+            // Puedes usar esto si el backend imprime algo como "OK" o "ERROR"
+            if (text.includes("OK")) {
+                //window.location.href = "index.php";
+            } else {
+                errorMsg.textContent = text || "Inicio de sesión fallido.";
+            }
+    
+        } catch (error) {
+            console.error("Error:", error);
+            errorMsg.textContent = "Error del servidor.";
+        }
+/*
         const usuario = document.getElementById("usuario").value.trim();
-        const password = document.getElementById("password").value.trim();
+        const password = document.getElementById("contra").value.trim();
 
         try {
             const respuesta = await fetch("../backend/login.php", {
@@ -43,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (datos.success) {
                 // Redirigir si el login fue exitoso
-                window.location.href = "index.html"; // o tu página principal
+                window.location.href = "index.php"; // o tu página principal
             } else {
                 // Mostrar mensaje de error
                 errorMsg.style.display = "block";
@@ -55,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error("Error en la solicitud:", error);
             errorMsg.style.display = "block";
             errorMsg.textContent = "Error del servidor.";
-        }
+        }*/
     });
 
     document.addEventListener("keydown", (e) => {
