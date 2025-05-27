@@ -52,6 +52,12 @@
         <a href="../pages/logIn.php" class="user">
             <img src="../assets/img/user.png" alt="login" class="imagen">
         </a>
+         <?php
+        session_start();
+        if(isset($_SESSION["Id"])){
+            echo $_SESSION["Nom"];
+        }
+     ?>
     </header>
 
     <div class="cart-icon" id="cartIcon">
