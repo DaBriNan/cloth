@@ -55,7 +55,7 @@
                 <input type="text" name="estado" class="auth-input" placeholder="Estado">
                 <input type="text" name="ciudad" class="auth-input" placeholder="Ciudad">
                 <input type="text" name="cp" class="auth-input" placeholder="Cp">
-                <button type="submit" class="auth-btn" name = "submit">Registrarse</button>
+                <button type="submit" class="auth-btn" name = "submit"> Registrarse</button>
                 <p id="errorRegister" class="error-message"></p>
             </form>
             <p class="auth-switch">¿Ya tienes cuenta? <a href="logIn.php" id="showLogin">Inicia sesión aquí</a></p>
