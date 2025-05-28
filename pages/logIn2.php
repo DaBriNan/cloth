@@ -13,7 +13,7 @@
 </head>
 <body>
     <header class="barra-menu">
-        <a href="./index.html">
+        <a href="../index.html">
             <img src="../assets/img/logoFinal.png" class="imgMenu" alt="Inicio">
         </a>
         <div class="container">
@@ -47,7 +47,7 @@
     </header>
 
     <!-- Modal de Login -->
-    <div id="modalLogin" class="modal">
+    <!-- <div id="modalLogin" class="modal">
         <div class="modal-contenido">
             <span class="cerrar">&times;</span>
             <h2>Iniciar Sesión</h2>
@@ -57,10 +57,64 @@
                 <button type="submit"  class="login-btn" name="submit">Iniciar Sesión</button>
                 <p id="errorLogin"></p>
             </form>
-            <p class="auth-switch">¿No tienes cuenta? <a href="logIn2.php" id="showRegister">Regístrate aquí</a></p>
+            <p class="auth-switch">¿No tienes cuenta? <a href="#" id="showRegister">Regístrate aquí</a></p>
         </div>
+    </div> -->
+
+
+     <!-- Formulario de Registro -->
+        <div id="registerSection" class="registerSection">
+              <div class="registerFormContainer">
+        <span class="cerrar" id="cerrarRegistro">&times;</span>
+            <h2>Registro</h2>
+            <form id="registerForm" >
+                <input type="email" name="email" class="auth-input" placeholder="Correo electrónico" required>
+                <input type="password" name="contra" class="auth-input" placeholder="Contraseña" required>
+                <input type="text" name="nombre" class="auth-input" placeholder="Nombre completo" required>
+                <input type="text" name="estado" class="auth-input" placeholder="Estado" required>
+                <input type="text" name="ciudad" class="auth-input" placeholder="Ciudad" required>
+                <input type="text" name="direccion" class="auth-input" placeholder="Direccion" required>
+                <input type="text" name="cp" class="auth-input" placeholder="Cp" required>
+                <input type="password" name="confirm_contra" class="auth-input" placeholder="Confirmar contraseña" required>
+                <button type="submit" class="auth-btn">Registrarse</button>
+                <p id="errorRegister" class="error-message"></p>
+            </form>
+            <p class="auth-switch">¿Ya tienes cuenta? <a href="#login" id="showLogin">Inicia sesión aquí</a></p>
+        </div>
+        
     </div>
 
     <!-- <script src="../assets/js/log.js"></script> -->
+
+<script>
+          
+    const loginModal = document.getElementById("modalLogin");
+    const registerForm = document.getElementById("registerSection");
+    const showRegister = document.getElementById("showRegister");
+    const showLogin = document.getElementById("showLogin");
+
+    showRegister.addEventListener("click", function(e) {
+        e.preventDefault();
+        loginModal.style.display = "none";
+        registerForm.style.display = "block";
+    });
+
+    showLogin.addEventListener("click", function(e) {
+        e.preventDefault();
+        registerForm.style.display = "none";
+        loginModal.style.display = "block";
+    });
+
+    const cerrarRegistro = document.getElementById("cerrarRegistro");
+
+cerrarRegistro.addEventListener("click", function() {
+    registerForm.style.display = "none";
+});
+
+
+</script>
+
+
+
 </body>
 </html>
