@@ -119,14 +119,14 @@
                     
                     //adaptar a tu codigo
                       const content = `
-                      <div class="producto" data-id=${result.categoriaP}>
+                      <div class="producto" data-id=${result.idCatalogo}>
                       <img class ="img-Chapter" src=../assets/img/${result.rutaImagen} alt="chapter">
                         <h3> ${result.nombreProducto} </h3
                         <p> ${result.precioP}</p>
                           <p> ${result.tallaP}</p>
                           <p class="descripcion">${result.descripcionDeProducto}</p>
                           <button class="btn-megusta" >❤️</button>
-                          <button onclick="addToCart(${result.categoriaP}, '${result.nombreProducto}', '${result.precioP}', '../assets/img/${result.rutaImagen}')">Comprar</button>
+                          <button onclick="addToCart(${result.idCatalogo}, '${result.nombreProducto}', '${result.precioP}', '../assets/img/${result.rutaImagen}')">Comprar</button>
                       </div>
                       `;
 
