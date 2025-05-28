@@ -46,20 +46,20 @@ if(isset($_POST["submit"])) {
     // Validar campos vacíos
     $array = array($usr, $pwd);
     if(isEmptyInput($array) == true) {
-        header("location: ../../cloth/pages/login.php");
+        header("location: ../../Clotheasy-copia/pages/login.php");
         exit();
     }
 
     // Buscar usuario
     $uidExists = uidExists($conexion, $usr);
     if(!$uidExists) {
-        header("location: ../../cloth/pages/login.php");
+        header("location: ../../Clotheasy-copia/pages/login.php");
         exit();
     }
 
     // Comparar contraseña (texto plano)
     if($pwd !== $uidExists["contra"]) {
-        header("location: ../../cloth/pages/login.php");
+        header("location: ../../Clotheasy-copia/pages/login.php");
         exit();
     }
     

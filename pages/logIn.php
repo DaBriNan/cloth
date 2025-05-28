@@ -54,7 +54,7 @@
             <form id="loginForm"  action="../backend/login.php" method="post">
                 <input type="text" name="usuario"  id="usuario" class="login-input" placeholder="Usuario" required>
                 <input type="password" name="contra" id="contra" class="login-input" placeholder="Contraseña" required>
-                <button type="submit"  class="login-btn" name="submit">Iniciar Sesión</button>
+                <button type="submit"  class="login-btn" name="submit"> <a href="index.html"></a>  Iniciar Sesión</button>
                 <p id="errorLogin"></p>
             </form>
             <p class="auth-switch">¿No tienes cuenta? <a href="logIn2.php" id="showRegister">Regístrate aquí</a></p>
