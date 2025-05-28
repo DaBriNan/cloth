@@ -26,76 +26,81 @@ body {
   /* Basic Styling */
 
   
-  
   .search-form {
-     position: relative;
-    width: 3.75rem;
-    height: 2.5rem;  /* ← Cambiar de 3.75rem a 2.5rem */
-    border-radius: 999px;
+    position: relative;
+    width: 40px; /* Ancho inicial más pequeño */
+    height: 40px;
+    border-radius: 20px;
     background-color: white;
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
-    padding: 0.5rem;  /* ← Cambiar de 0.75rem a 0.5rem */
-    margin: 0 0.5rem;
-    transition: width 0.5s;
-  }
-  
-  .search-input {
-    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 5px;
+    transition: all 0.3s ease;
+    overflow: hidden; /* Oculta el contenido que sobresale */
+}
+
+.search-input {
+    background-color: transparent;
     border: none;
     outline: none;
-    width: 100%;
+    width: calc(100% - 50px);
     height: 100%;
-    border-radius: 999px;
-    padding-left: 1rem;
-    font-size: small;
-    pointer-events: none;
-  }
-  
-  .search-button {
-    width: 2rem;  /* ← Cambiar de 3rem a 2rem */
-    height: 2rem; /* ← Cambiar de 3rem a 2rem */
-    border-radius: 999px;
+    position: absolute;
+    left: 50px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-size: 14px;
+    color: #333;
+}
+
+.search-button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
     background-color: #059669;
     position: absolute;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    right: 5px;
+    transform: translateY(-50%);
     cursor: pointer;
-    transition: all 0.5s;
-  }
-  
-  .search-icon,
-  .search-close {
-    position: absolute;
-    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.search-icon, .search-close {
     color: white;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  
-  .search-close {
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.search-close {
+    position: absolute;
     opacity: 0;
-  }
-  
-  /* Active Search */
-  
-  .active-search {
-    max-width: 100%;
-    width: 20rem;
-  }
-  
-  .active-search .search-button {
-     left: calc(100% - 1.5rem); 
-  }
-  
-  .active-search .search-input {
-    pointer-events: initial;
-  }
-  
-  .active-search .search-close {
+}
+
+/* Estado activo */
+.search-form.active-search {
+    width: 250px; /* Ancho cuando está activo */
+}
+
+.search-form.active-search .search-input {
     opacity: 1;
-  }
+    left: 15px;
+}
+
+.search-form.active-search .search-button {
+    right: 5px;
+    background-color: #dc2626; /* Rojo cuando está activo */
+}
+
+.search-form.active-search .search-icon {
+    opacity: 0;
+}
+
+.search-form.active-search .search-close {
+    opacity: 1;
+}
   
   .active-search .search-icon {
     opacity: 0;
@@ -772,18 +777,5 @@ a{
   }
 
   
-/* Estado normal del corazón */
-.imagen-corazon {
-    width: 24px;
-    height: 24px;
-    transition: all 0.3s ease;
-}
-
-/* Estado activo (cuando hay favoritos) */
-.imagen-corazon.activo {
-    filter: brightness(0) saturate(100%) invert(25%) sepia(90%) saturate(5000%) hue-rotate(340deg);
-    /* Alternativa si prefieres cambiar la imagen: */
-    /* content: url('assets/img/Heart-red.png'); */
-}
 
 

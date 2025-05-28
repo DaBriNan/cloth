@@ -262,30 +262,44 @@
     <!-- SwiperJS Script -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script>
-        const swiper = new Swiper('.mySwiper', {
-            slidesPerView: 3,
-            spaceBetween: 30,
-            loop: true,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
+    const swiper = new Swiper('.mySwiper', {
+        slidesPerView: 3,
+        spaceBetween: 30,
+        loop: true,
+        autoplay: {
+            delay: 5500,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+            0: {
+                slidesPerView: 1,
             },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
+            640: {
+                slidesPerView: 2,
             },
-            breakpoints: {
-                0: {
-                    slidesPerView: 1,
-                },
-                640: {
-                    slidesPerView: 2,
-                },
-                1024: {
-                    slidesPerView: 3,
-                },
-            }
-        });
+            1024: {
+                slidesPerView: 3,
+            },
+        },
+        // Efectos opcionales
+        speed: 600,
+        grabCursor: true,
+    });
+
+    // Opcional: Control con hover
+    const swiperContainer = document.querySelector('.mySwiper');
+    if (swiperContainer) {
+        swiperContainer.addEventListener('mouseenter', () => swiper.autoplay.stop());
+        swiperContainer.addEventListener('mouseleave', () => swiper.autoplay.start());
+    }
     </script>
 
 <script>
