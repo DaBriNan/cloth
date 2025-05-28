@@ -13,7 +13,7 @@
 </head>
 <body>
     <header class="barra-menu">
-        <a href="./index.html">
+        <a href="../index.html">
             <img src="../assets/img/logoFinal.png" class="imgMenu" alt="Inicio">
         </a>
         <div class="container">
