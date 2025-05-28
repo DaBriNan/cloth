@@ -40,6 +40,6 @@ if(isset($_POST["submit"])) {
         $_SESSION["Cp"] = $uidExists["cp"];
     }
     
-    header("location: ../../cloth/pages/produPrueba.php");
+    header("location: ../../Clotheasy-copia/pages/produPrueba.php");
     exit();
 }
