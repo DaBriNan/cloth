@@ -143,10 +143,17 @@
               </div>
           
               <button type="submit" class="btn-enviar">Finalizar Pedido</button>
+              <div id="paypal-button-container"></div>
             </form>
           </section>
+          
         </div>
         
+
+        
+<script src="https://www.paypal.com/sdk/js?client-id=ASDHu3rw0jW3_YguE0695whO9pZvutc3by-p_tVgB64kJiBwRFiSujUsYy7haPmSWOh-C-8qftUiDIJv&currency=MXN"></script>
+<script src="../assets/js/paypal.js"></script>
+
 
     <script src="../assets/js/buy.js"></script>
     <script src="../assets/js/compras.js"></script>

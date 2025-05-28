@@ -155,6 +155,7 @@ body {
     font-family: Outfit;
 }
 
+
 .search-form {
     position: relative;
     width: 40px; /* Ancho inicial más pequeño */
@@ -234,7 +235,6 @@ body {
   .active-search .search-icon {
     opacity: 0;
   }
-
 
 
 
