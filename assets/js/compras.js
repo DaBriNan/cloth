@@ -14,11 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.getElementById('formularioEnvio').addEventListener('submit', function(e) {
     e.preventDefault();
-  
-    // Aquí podrías hacer validaciones más específicas si lo necesitas
+    clearCart()
+    
     alert("¡Gracias por tu compra! Tu pedido ha sido registrado.");
     this.reset();
-    localStorage.removeItem("cart");
+    
   });
   
 

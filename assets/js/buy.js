@@ -57,6 +57,14 @@ document.addEventListener('DOMContentLoaded', () => {
         saveCart();
     };
 
+    //Elimina productos del carrito
+    window.clearCart = function() {
+        cart.items = [];
+        updateCartTotal();
+        updateCartUI(); 
+        saveCart();     
+    };
+
     window.increaseQuantity = function(id) {
         const item = cart.items.find(item => item.id === id);
         if (item) {
