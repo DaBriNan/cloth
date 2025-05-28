@@ -130,9 +130,10 @@ function eliminarProductos(ids) {
         url: '../backend/comprar.php',
         data: { func: 'deleteChapter', id: JSON.stringify(ids) },
         success: function (data) {
+            alert(data)
             alert("¡Gracias por tu compra! Tu pedido ha sido registrado.")
             clearCart()
-            //window.location.href = "../produPrueba.php";
+            //window.location.href = "/pages/produPrueba.php";
         },
         error: function (error) {
             //console.error('Error al intentar eliminar el capítulo:', error);

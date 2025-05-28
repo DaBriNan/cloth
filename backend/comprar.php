@@ -24,5 +24,5 @@ if( isset($_POST['func']) && $_POST['func'] !=''){
         mysqli_query($conexion, $sql);
     }
     
-    echo "bien";
+    echo $ids[1];
 }
