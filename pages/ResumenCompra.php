@@ -97,10 +97,6 @@
                   required>
               </div>
           
-              <!-- <div class="form-group">
-                <label for="direccion">Dirección</label>
-                <input type="text" id="direccion" required>
-              </div> -->
               <div class="form-group">
                 <label for="direccion">Dirección</label>
                 <input 
@@ -110,11 +106,7 @@
                   value="<?= isset($_SESSION['Dir']) ? htmlspecialchars($_SESSION['Dir']) : '' ?>" 
                   required>
               </div>
-          
-              <!-- <div class="form-group">
-                <label for="ciudad">Ciudad</label>
-                <input type="text" id="ciudad" required>
-              </div> -->
+
               <div class="form-group">
                 <label for="ciudad">Ciudad</label>
                 <input 
@@ -125,10 +117,6 @@
                   required>
               </div>
           
-              <!-- <div class="form-group">
-                <label for="estado">Estado</label>
-                <input type="text" id="estado" required>
-              </div> -->
               <div class="form-group">
                 <label for="estado">Estado</label>
                 <input 
@@ -139,10 +127,6 @@
                   required>
               </div>
           
-              <!-- <div class="form-group">
-                <label for="codigoPostal">Código Postal</label>
-                <input type="text" id="codigoPostal" required>
-              </div> -->
               <div class="form-group">
                 <label for="codigoPostal">Código Postal</label>
                 <input 
