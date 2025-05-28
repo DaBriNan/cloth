@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         overlay.classList.remove('active');
     }
 
+
     window.addToCart = function(id, name, price, image, description) {
         const existingItemIndex = cart.items.findIndex(item => item.id === id);
 
@@ -64,6 +65,14 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCartUI(); 
         saveCart();     
     };
+
+    //selecciona los IDs
+    window.showItems = function() {
+        const ids = cart.items.map(item => item.id);
+        return ids
+    };
+
+
 
     window.increaseQuantity = function(id) {
         const item = cart.items.find(item => item.id === id);

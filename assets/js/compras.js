@@ -14,9 +14,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.getElementById('formularioEnvio').addEventListener('submit', function(e) {
     e.preventDefault();
-    clearCart()
+    const items = showItems()
+    // alert(items)
+    eliminarProductos(items)
+    //clearCart()
     
-    alert("¡Gracias por tu compra! Tu pedido ha sido registrado.");
+    //alert("¡Gracias por tu compra! Tu pedido ha sido registrado.");
+    /*$.ajax({
+        type: 'POST',
+        url: '../../app/backend/comprar.php',
+        data: { func: 'deleteChapter', id: "2" },
+        success: function (data) {
+            alert("aqui")
+            //window.location.href = "../../backend/comprar.php";
+        },
+        error: function (error) {
+            //console.error('Error al intentar eliminar el capítulo:', error);
+            alert("aca")
+        }
+    });*/
     this.reset();
     
   });
@@ -106,3 +122,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     renderResumen();
 });
+
+
+function eliminarProductos(ids) {
+    $.ajax({
+        type: 'POST',
+        url: '../backend/comprar.php',
+        data: { func: 'deleteChapter', id: JSON.stringify(ids) },
+        success: function (data) {
+            alert("¡Gracias por tu compra! Tu pedido ha sido registrado.")
+            clearCart()
+            //window.location.href = "../produPrueba.php";
+        },
+        error: function (error) {
+            //console.error('Error al intentar eliminar el capítulo:', error);
+            alert("Error al intentar hacer la compra, intenta más tarde")
+        }
+    });
+}
