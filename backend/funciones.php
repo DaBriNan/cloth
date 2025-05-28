@@ -1,49 +1,12 @@
 
 <?php
 
-
-
-// function uidExists($conexion, $usr){
-//     //prepared statements
-//     $sql = "SELECT * FROM Usuarios WHERE correo = ?;";
-//     $stmt = mysqli_stmt_init($conexion);
-//     if(!mysqli_stmt_prepare($stmt, $sql)){
-//         echo "entra primer if";
-//         header("location: ../../aqui.php?error=stmtFailed");
-//         exit();
-//     }
-
-//     #ss = 2 strings
-//     mysqli_stmt_bind_param($stmt, "s", $usr);
-
-//     #execute
-//     mysqli_stmt_execute($stmt);
-
-//     #grab data
-//     $resultData = mysqli_stmt_get_result($stmt);
-
-//     if($row = mysqli_fetch_assoc($resultData)){
-//         //hay algo
-//         echo "segundo if que debe regresar añlgo";
-//         echo $row;
-//         return $row;
-//     }
-
-//     return false;
-
-//     //Closing the statement
-//     mysqli_stmt_close($stmt);
-//     //Closing the connection
-//     mysqli_close($conexion);
-// }
-
 use function PHPSTORM_META\type;
 
 function uidExists($conexion, $usr) {
     $sql = "SELECT * FROM usuarios WHERE correo = ?"; // Solo busca por correo
     $stmt = mysqli_stmt_init($conexion);
     if(!mysqli_stmt_prepare($stmt, $sql)) {
-        //header("location: ../../error.php?error=stmtFailed");
         exit();
     }
     mysqli_stmt_bind_param($stmt, "s", $usr);
@@ -66,12 +29,30 @@ function crearProducto($conexion, $producto, $descripcion, $precio, $talla,$cate
     $sql = "INSERT INTO catalogo (producto, descripcion, precio, talla_id,categoria_id) 
             VALUES (?, ?, ?, ?, ?);";
     $stmt = mysqli_stmt_init($conexion);
-    //echo $stmt;
     if(!mysqli_stmt_prepare($stmt, $sql)){
         return -1;
     }
 
     mysqli_stmt_bind_param($stmt, "ssdii", $producto, $descripcion, $precio, $talla, $categoria);
+    mysqli_stmt_execute($stmt);
+
+    mysqli_stmt_close($stmt);
+
+    return mysqli_insert_id($conexion);
+}
+
+
+//creacion de usuario
+function crearUsuario($conexion, $usr, $pwd, $name, $edo, $ciu, $dir, $cod) {
+    $sql = "INSERT INTO usuarios (correo, contra, nombre, estado, ciudad, direccion, cp) 
+            VALUES (?, ?, ?, ?, ?, ?, ?);";
+    $stmt = mysqli_stmt_init($conexion);
+    //echo $stmt;
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+        return -1;
+    }
+
+    mysqli_stmt_bind_param($stmt, "sssssss", $usr, $pwd, $name, $edo, $ciu, $dir, $cod);
     mysqli_stmt_execute($stmt);
 
     mysqli_stmt_close($stmt);
