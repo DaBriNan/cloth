@@ -32,7 +32,7 @@
     <a href="../pages/meGusta.php" class="meGusta">
       <img src="../assets/img/Heart.png" alt="meGusta" class="imagen">
     </a>
-    <a href="../pages/login.html" class="user">
+    <a href="../pages/logIn.php" class="user">
       <img src="../assets/img/user.png" alt="login" class="imagen">
     </a>
      <?php

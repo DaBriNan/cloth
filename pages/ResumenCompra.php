@@ -21,7 +21,7 @@
         <a href="../index.html">
             <img src="../assets/img/logoFinal.png" class="imgMenu" alt="Inicio">
         </a>
-        <div class="container">
+       <div class="container">
       
             <form action="" class="search-form">
               <input type="text" placeholder="Buscar..." class="search-input" />

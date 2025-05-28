@@ -6,17 +6,7 @@
 }
 
 
-body {
-    background: linear-gradient(to bottom, #F6C1A7 0%, #E2DFDF 100%);
-    font-family: 'Outfit', sans-serif;
-    
-}
-body{
-    background-repeat: no-repeat; /* Evita que el degradado se repita */
-    background-attachment: fixed; 
-    font-family: 'Outfit', sans-serif;
 
-}
 .imgMenu {
     height: 150px !important;
     width: auto !important;
@@ -281,4 +271,34 @@ button {
 
 button:hover {
     background: #7B895D;
+}
+
+.auth-form {
+    transition: opacity 0.3s ease;
+}
+
+
+
+#registerSection {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#registerSection .registerFormContainer {
+    max-width: 350px;
+    background: linear-gradient(93deg, #7B895D 6.37%, #71824D 38.67%, #3F5A05 77.37%);
+    border-radius: 10px;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }

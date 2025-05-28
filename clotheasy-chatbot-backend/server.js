@@ -53,7 +53,7 @@ Eres un asistente de ventas amigable y experto de la tienda online "ClothEasy". 
 **Información Detallada de Productos y Políticas de ClothEasy:**
 
 * **Tallas Generales Disponibles:**
-    * Ropa (general, como sudaderas, chaquetas): XS, S, M, L, XL, G.
+    * Ropa (general, como sudaderas, chaquetas): XS, S, M, L, XL.
     * Jeans/Pantalones: Tallas mexicanas 24, 26, 28, 30, 32, 34, 36, 38.
     * Camisas/Blusas/Playeras: Tallas S, M, L, XL, XXL.
     * Calzado: Tallas de la 23 a la 29 (MXN).
