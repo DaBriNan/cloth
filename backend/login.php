@@ -71,6 +71,6 @@ if(isset($_POST["submit"])) {
     $_SESSION["Ciu"] = $uidExists["ciudad"];
     $_SESSION["Edo"] = $uidExists["estado"];
     $_SESSION["Cp"] = $uidExists["cp"];
-    header("location: ../../Clotheasy-copia/pages/produPrueba.php");
+    header("location: ../../Clotheasy-copia/index.html");
     exit();
 }

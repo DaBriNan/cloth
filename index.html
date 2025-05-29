@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -58,10 +62,57 @@
             <img src="assets/img/Heart.png" alt="Favoritos" class="imagen-corazon">
         </a>
 
-        <a href="pages/logIn.php" class="user">
+        <!-- <a href="pages/logIn.php" class="user">
+            <img src="assets/img/user.png" alt="login" class="imagen">
+        </a>
+         -->
+
+
+         <!-- logout inicia -->
+           <div class="user-container">
+        <!-- Botón de login (visible por defecto) -->
+        <a href="pages/logIn.php" class="user" id="login-btn">
             <img src="assets/img/user.png" alt="login" class="imagen">
         </a>
         
+        <!-- Menú de usuario logueado (oculto por defecto) -->
+        <div class="user-menu" id="user-menu" style="display: none;">
+            <button class="user user-button" onclick="toggleUserDropdown()">
+                <img src="assets/img/user.png" alt="usuario" class="imagen">
+                <span class="user-name" id="user-name-display">Usuario</span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+            
+            <div class="user-dropdown" id="user-dropdown">
+                <div class="user-info">
+                    <h4 id="user-full-name">Usuario</h4>
+                    <p>Bienvenid@ de vuelta</p>
+                </div>
+                
+                <a href="pages/perfil.php">
+                    <i class="fas fa-user" style="margin-right: 8px;"></i>
+                    Mi Perfil
+                </a>
+                <!-- <a href="pages/misPedidos.php">
+                    <i class="fas fa-shopping-bag" style="margin-right: 8px;"></i>
+                    Mis Pedidos
+                </a> -->
+                <!-- <a href="pages/direcciones.php">
+                    <i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i>
+                    Mis Direcciones -->
+                <!-- </a>
+                <a href="pages/configuracion.php">
+                    <i class="fas fa-cog" style="margin-right: 8px;"></i>
+                    Configuración
+                </a> -->
+                <a href="backend/logout.php" class="logout-link" onclick="return confirmLogout()">
+                    <i class="fas fa-sign-out-alt logout-icon" style="margin-right: 8px;"></i>
+                    Cerrar Sesión
+                </a>
+            </div>
+        </div>
+    </div>
+
     </header>
 
 
@@ -378,6 +429,116 @@
 </button>
 
 <script src="assets/js/chatbot.js"></script>
+
+
+<!-- logout -->
+<script>
+// Variables globales
+let isLoggedIn = false;
+let currentUser = null;
+
+// Verificar sesión al cargar la página
+document.addEventListener('DOMContentLoaded', function() {
+    checkUserSession();
+    setupDropdownClickOutside();
+});
+
+// Verificar si hay una sesión activa
+function checkUserSession() {
+    // Hacer una petición AJAX para verificar la sesión PHP
+    fetch('backend/check_session.php')
+        .then(response => response.json())
+        .then(data => {
+            if (data.loggedIn) {
+                showLoggedInState(data.user);
+            } else {
+                showLoggedOutState();
+            }
+        })
+        .catch(error => {
+            console.log('Error verificando sesión:', error);
+            showLoggedOutState();
+        });
+}
+
+// Mostrar estado cuando el usuario está logueado
+function showLoggedInState(user) {
+    isLoggedIn = true;
+    currentUser = user;
+    
+    document.getElementById('login-btn').style.display = 'none';
+    document.getElementById('user-menu').style.display = 'inline-block';
+    document.getElementById('user-name-display').textContent = user.name || 'Usuario';
+    document.getElementById('user-full-name').textContent = user.name || 'Usuario';
+}
+
+// Mostrar estado cuando el usuario NO está logueado
+function showLoggedOutState() {
+    isLoggedIn = false;
+    currentUser = null;
+    
+    document.getElementById('login-btn').style.display = 'flex';
+    document.getElementById('user-menu').style.display = 'none';
+}
+
+// Toggle del dropdown del usuario
+function toggleUserDropdown() {
+    const dropdown = document.getElementById('user-dropdown');
+    const userMenu = document.getElementById('user-menu');
+    const overlay = getOrCreateOverlay();
+    
+    if (dropdown.classList.contains('show')) {
+        dropdown.classList.remove('show');
+        userMenu.classList.remove('active');
+        overlay.classList.remove('active');
+    } else {
+        dropdown.classList.add('show');
+        userMenu.classList.add('active');
+        overlay.classList.add('active');
+    }
+}
+
+// Cerrar dropdown al hacer clic fuera
+function setupDropdownClickOutside() {
+    document.addEventListener('click', function(event) {
+        const userMenu = document.getElementById('user-menu');
+        const dropdown = document.getElementById('user-dropdown');
+        const overlay = document.getElementById('dropdown-overlay');
+        
+        if (userMenu && !userMenu.contains(event.target)) {
+            if (dropdown) dropdown.classList.remove('show');
+            if (userMenu) userMenu.classList.remove('active');
+            if (overlay) overlay.classList.remove('active');
+        }
+    });
+}
+
+// Crear overlay si no existe
+function getOrCreateOverlay() {
+    let overlay = document.getElementById('dropdown-overlay');
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.id = 'dropdown-overlay';
+        overlay.className = 'dropdown-overlay';
+        overlay.addEventListener('click', function() {
+            const dropdown = document.getElementById('user-dropdown');
+            const userMenu = document.getElementById('user-menu');
+            if (dropdown) dropdown.classList.remove('show');
+            if (userMenu) userMenu.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+        document.body.appendChild(overlay);
+    }
+    return overlay;
+}
+
+// Confirmar logout
+function confirmLogout() {
+    return confirm('¿Estás seguro que deseas cerrar sesión?');
+}
+</script>
+
+
 
 </body>
 
