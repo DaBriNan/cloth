@@ -149,7 +149,7 @@
           
         </div> -->
 
-        <!-- HTML actualizado para tu checkout -->
+        
 
 <h1><span class="azul">Bolsa de</span> <span class="celeste">Compra</span></h1>
 <br>
@@ -204,11 +204,11 @@
         </form>
     </section>
 
-    <!-- Resumen de compra lateral - mantiene tu estructura original -->
+    
     <div id="resumenContainer" class="contenedor">
-        <!-- Tu JavaScript actual llenará este contenedor -->
+        <!--  JavaScript actual llenará este contenedor -->
         
-        <!-- Opcionalmente puedes agregar la sección de descuento aquí -->
+        
         <div class="descuento-seccion" style="display: none;">
             <div class="descuento-input">
                 <input type="text" placeholder="Código de descuento" id="codigoDescuento">

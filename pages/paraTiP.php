@@ -266,6 +266,8 @@
     <script src="../assets/js/log.js"></script>
     <script src="../assets/js/buy.js"></script>
     <script src="../assets/js/scrpitInicio.js"></script>
+    <script src="../assets/js/meGusta.js"></script>
+    <script src="../assets/js/favs.js"></script>
 
 </script>
 

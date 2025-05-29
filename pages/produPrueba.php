@@ -134,7 +134,8 @@
                             data-image="../assets/img/${result.rutaImagen}">
                         ❤️
                     </button>
-                          <button onclick="addToCart(${result.idCatalogo}, '${result.nombreProducto}', '${result.precioP}', '../assets/img/${result.rutaImagen}')">Comprar</button>
+                          <button onclick="addToCart(${result.idCatalogo}, '${result.nombreProducto}', '${result.precioP}', '../assets/img/${result.rutaImagen}')">
+                          🛒 Añadir</button>
                       </div>
                       `;
 
