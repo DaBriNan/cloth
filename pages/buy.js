@@ -88,6 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cartTotalElement.textContent = cart.total.toFixed(2);
         cartItemsContainer.innerHTML = '';
 
+        // ya no aparece el icono de incrementar
         cart.items.forEach(item => {
             const itemElement = document.createElement('div');
             itemElement.className = 'cart-item';
@@ -101,9 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <span class="material-symbols-outlined">remove_circle</span>
                         </div>
                         <span class="item-quantity">${item.quantity}</span>
-                        <div class="quantity-btn" onclick="increaseQuantity(${item.id})">
-                            <span class="material-symbols-outlined">add_circle</span>
-                        </div>
+                        <!-- ÍCONO DE AUMENTAR ELIMINADO -->
                         <div class="remove-item" onclick="removeFromCart(${item.id})">
                             <span class="material-symbols-outlined">delete</span>
                         </div>
@@ -132,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.getElementById('checkoutBtn').addEventListener('click', () => {
-        window.location.href = 'Resumencompra.php';
+        window.location.href = 'pages/Resumencompra.php';
     });
 
     // Modal de compra
