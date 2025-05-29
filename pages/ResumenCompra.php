@@ -73,7 +73,7 @@
         <div class="overlay" id="overlay"></div>
 
     
-      <h1><span class="azul">Bolsa de</span> <span class="celeste">Compra</span></h1>
+      <!-- <h1><span class="azul">Bolsa de</span> <span class="celeste">Compra</span></h1>
      <br>
 
        
@@ -147,7 +147,76 @@
             </form>
           </section>
           
+        </div> -->
+
+        <!-- HTML actualizado para tu checkout -->
+
+<h1><span class="azul">Bolsa de</span> <span class="celeste">Compra</span></h1>
+<br>
+
+<div class="compra-wrapper">
+    <!-- Formulario de datos de envío -->
+    <section class="datos-envio">
+        <h2>Datos de Envío</h2>
+        <form id="formularioEnvio">
+            <div class="form-group">
+                <label for="nombre">Nombre completo</label>
+                <input type="text" id="nombre" name="nombre" 
+                       value="<?= isset($_SESSION['Nom']) ? htmlspecialchars($_SESSION['Nom']) : '' ?>" 
+                       required>
+            </div>
+
+            <div class="form-group">
+                <label for="direccion">Dirección</label>
+                <input type="text" id="direccion" name="direccion" 
+                       value="<?= isset($_SESSION['Dir']) ? htmlspecialchars($_SESSION['Dir']) : '' ?>" 
+                       required>
+            </div>
+
+            <div class="form-group">
+                <label for="ciudad">Ciudad</label>
+                <input type="text" id="ciudad" name="ciudad" 
+                       value="<?= isset($_SESSION['Ciu']) ? htmlspecialchars($_SESSION['Ciu']) : '' ?>" 
+                       required>
+            </div>
+
+            <div class="form-group">
+                <label for="estado">Estado</label>
+                <input type="text" id="estado" name="estado" 
+                       value="<?= isset($_SESSION['Edo']) ? htmlspecialchars($_SESSION['Edo']) : '' ?>" 
+                       required>
+            </div>
+
+            <div class="form-group">
+                <label for="codigoPostal">Código Postal</label>
+                <input type="text" id="codigoPostal" name="codigoPostal" 
+                       value="<?= isset($_SESSION['Cp']) ? htmlspecialchars($_SESSION['Cp']) : '' ?>" 
+                       required>
+            </div>
+
+            <div class="form-group">
+                <label for="telefono">Teléfono</label>
+                <input type="tel" id="telefono" required>
+            </div>
+
+            <button type="submit" class="btn-enviar">🔒 Finalizar Pedido</button>
+            <div id="paypal-button-container"></div>
+        </form>
+    </section>
+
+    <!-- Resumen de compra lateral - mantiene tu estructura original -->
+    <div id="resumenContainer" class="contenedor">
+        <!-- Tu JavaScript actual llenará este contenedor -->
+        
+        <!-- Opcionalmente puedes agregar la sección de descuento aquí -->
+        <div class="descuento-seccion" style="display: none;">
+            <div class="descuento-input">
+                <input type="text" placeholder="Código de descuento" id="codigoDescuento">
+                <button type="button" onclick="aplicarDescuento()">Aplicar</button>
+            </div>
         </div>
+    </div>
+</div>
         
 
         

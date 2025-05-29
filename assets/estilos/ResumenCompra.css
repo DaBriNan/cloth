@@ -58,7 +58,7 @@
 }
 
 
-
+/* 
 .vender {
   display: inline-block;
   
@@ -79,11 +79,11 @@
 
 .comprar {
   display: inline-block;
-  /* Para que el fondo se ajuste al contenido */
+  
   border-radius: 25px;
   background-color: #008CCA;
   padding: 2px 10px;
-  /* Aumentar padding para agrandar el fondo */
+  
 }
 
 .comprar .textoc {
@@ -97,11 +97,11 @@
 
 .paraTi {
   display: inline-block;
-  /* Para que el fondo se ajuste al contenido */
+  
   border-radius: 25px;
   background-color: #3F5A05;
   padding: 2px 10px;
-  /* Aumentar padding para agrandar el fondo */
+  
 }
 
 .paraTi .textop {
@@ -116,14 +116,14 @@
 
 .search-form {
     position: relative;
-    width: 40px; /* Ancho inicial más pequeño */
+    width: 40px; 
     height: 40px;
     border-radius: 20px;
     background-color: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 5px;
     transition: all 0.3s ease;
-    overflow: hidden; /* Oculta el contenido que sobresale */
+    overflow: hidden; 
 }
 
 .search-input {
@@ -167,9 +167,9 @@
     opacity: 0;
 }
 
-/* Estado activo */
+
 .search-form.active-search {
-    width: 250px; /* Ancho cuando está activo */
+    width: 250px; 
 }
 
 .search-form.active-search .search-input {
@@ -179,7 +179,7 @@
 
 .search-form.active-search .search-button {
     right: 5px;
-    background-color: #dc2626; /* Rojo cuando está activo */
+    background-color: #dc2626; 
 }
 
 .search-form.active-search .search-icon {
@@ -192,7 +192,7 @@
   
   .active-search .search-icon {
     opacity: 0;
-  }
+  } */
 
 
 
@@ -391,7 +391,7 @@
     object-fit: cover;
   }
   
-  .compra {
+  /* .compra {
     background-color: #28a745;
     color: white;
     padding: 6px 12px;
@@ -408,7 +408,7 @@
   
 
   
-  /* Título principal */
+  
   h1 {
     text-align: center;
     margin: 30px 0;
@@ -557,4 +557,361 @@
 
 .btn-enviar:hover {
   background-color: #2c3e90;
+} */
+
+/* CSS para Checkout ClothEasy - Sidebar Sticky */
+
+/* Layout principal del checkout */
+.compra-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: transparent;
+    box-shadow: none;
+}
+
+/* Formulario de datos de envío */
+.datos-envio {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(108, 123, 127, 0.1);
+    height: fit-content;
+}
+
+.datos-envio h2 {
+    color: #6C7B7F;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    text-align: center;
+    padding-bottom: 15px;
+    border-bottom: 2px solid rgba(108, 123, 127, 0.2);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    background: #fafafa;
+}
+
+.form-group input:focus {
+    border-color: #6C7B7F;
+    outline: none;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(108, 123, 127, 0.1);
+}
+
+.btn-enviar {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(45deg, #6C7B7F, #8A9BA8);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    box-shadow: 0 4px 15px rgba(108, 123, 127, 0.3);
+}
+
+.btn-enviar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(108, 123, 127, 0.4);
+    background: linear-gradient(45deg, #5A6B70, #7A8B98);
+}
+
+/* Resumen de compra - sidebar */
+#resumenContainer.contenedor {
+    background: white;
+    border-radius: 20px;
+    padding: 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(108, 123, 127, 0.1);
+    position: sticky;
+    top: 20px;
+    height: fit-content;
+    max-height: 80vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    flex: none;
+    min-width: 400px;
+}
+
+/* Header del resumen - se agrega automáticamente */
+#resumenContainer.contenedor::before {
+    content: "🛍️ Resumen de tu pedido";
+    display: block;
+    background: linear-gradient(135deg, #6C7B7F, #8A9BA8);
+    color: white;
+    padding: 20px 25px;
+    border-radius: 20px 20px 0 0;
+    margin: 0;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* Wrapper para el contenido del resumen */
+#resumenContainer.contenedor {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Contenedor de productos con scroll */
+.resumen-productos {
+    max-height: 350px;
+    overflow-y: auto;
+    padding: 0 25px;
+    flex-grow: 1;
+}
+
+/* Estilos para cada producto */
+#resumenContainer.contenedor .resumen-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 15px !important;
+    padding: 20px 0 !important;
+    border-bottom: 1px solid #f0f0f0 !important;
+    transition: all 0.3s ease !important;
+    background: transparent !important;
+    margin-bottom: 0 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    position: relative;
+}
+
+#resumenContainer.contenedor .resumen-item:hover {
+    background: rgba(108, 123, 127, 0.05) !important;
+    margin: 0 -25px !important;
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+    border-radius: 10px !important;
+}
+
+#resumenContainer.contenedor .resumen-item:last-child {
+    border-bottom: none !important;
+}
+
+/* Imágenes de productos */
+#resumenContainer.contenedor .resumen-item img {
+    width: 60px !important;
+    height: 60px !important;
+    border-radius: 12px !important;
+    object-fit: cover !important;
+    border: 2px solid #f0f0f0 !important;
+    flex-shrink: 0;
+}
+
+/* Información del producto */
+#resumenContainer.contenedor .resumen-item > div:not(.resumen-total) {
+    flex: 1 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+#resumenContainer.contenedor .resumen-item h3 {
+    font-family: 'Outfit', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    color: #333 !important;
+    margin-bottom: 6px !important;
+    line-height: 1.3 !important;
+}
+
+#resumenContainer.contenedor .resumen-item p {
+    font-family: 'Outfit', sans-serif !important;
+    font-size: 12px !important;
+    color: #666 !important;
+    margin: 2px 0 !important;
+}
+
+/* Precios */
+#resumenContainer.contenedor .resumen-item p:last-of-type {
+    font-weight: 700 !important;
+    color: #6C7B7F !important;
+    font-size: 16px !important;
+}
+
+/* Botón de eliminar */
+#resumenContainer.contenedor .remove-item {
+    color: #ff6b6b !important;
+    font-size: 20px !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    padding: 5px !important;
+    border-radius: 50% !important;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#resumenContainer.contenedor .remove-item:hover {
+    background: rgba(255, 107, 107, 0.1) !important;
+    transform: translateY(-50%) scale(1.1) !important;
+}
+
+/* Sección de descuento */
+.descuento-seccion {
+    padding: 20px 25px;
+    border-top: 1px solid #f0f0f0;
+    background: rgba(108, 123, 127, 0.02);
+}
+
+.descuento-input {
+    display: flex;
+    gap: 10px;
+}
+
+.descuento-input input {
+    flex: 1;
+    padding: 10px 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    background: white;
+}
+
+.descuento-input button {
+    padding: 10px 15px;
+    background: #6C7B7F;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 13px;
+}
+
+.descuento-input button:hover {
+    background: #5A6B70;
+}
+
+/* Total al final */
+#resumenContainer.contenedor .resumen-total {
+    padding: 20px 25px !important;
+    border-top: 2px solid #f0f0f0 !important;
+    background: rgba(108, 123, 127, 0.02) !important;
+    border-radius: 0 0 20px 20px !important;
+    text-align: center !important;
+    margin-top: 0 !important;
+    flex-shrink: 0;
+}
+
+#resumenContainer.contenedor .resumen-total h2 {
+    font-family: 'Outfit', sans-serif !important;
+    font-size: 1.3rem !important;
+    font-weight: 700 !important;
+    color: #6C7B7F !important;
+    margin: 0 !important;
+}
+
+/* Título principal */
+body h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 30px 0 40px 0;
+}
+
+body h1 .azul {
+    background: linear-gradient(45deg, #6C7B7F, #8A9BA8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+body h1 .celeste {
+    color: #333;
+}
+
+/* Mensaje cuando no hay productos */
+#resumenContainer.contenedor > p {
+    padding: 40px 25px !important;
+    text-align: center !important;
+    color: #666 !important;
+    font-family: 'Outfit', sans-serif !important;
+    font-size: 16px !important;
+    margin: 0 !important;
+}
+
+/* PayPal container */
+#paypal-button-container {
+    margin-top: 15px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Scrollbar personalizada */
+.resumen-productos::-webkit-scrollbar {
+    width: 6px;
+}
+
+.resumen-productos::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.resumen-productos::-webkit-scrollbar-thumb {
+    background: #6C7B7F;
+    border-radius: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .compra-wrapper {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 15px;
+    }
+    
+    #resumenContainer.contenedor {
+        order: -1;
+        position: relative;
+        top: 0;
+        min-width: auto;
+        max-height: none;
+    }
+    
+    .datos-envio {
+        padding: 20px;
+    }
+    
+    .datos-envio h2 {
+        font-size: 1.3rem;
+    }
 }

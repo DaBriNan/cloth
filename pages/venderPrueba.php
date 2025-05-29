@@ -161,11 +161,55 @@
 });
     </script>
 
+ <footer class="footer">
+    <div class="footer-container">
+        <div class="footer-logo">
+            <h2>CLOTHEASY</h2>
+            <p>REDES SOCIALES</p>
+            <div class="social-icons">
+                <img src="../assets/img/facebook.png" alt="Facebook">
+                <img src="../assets/img/instagram.png" alt="Instagram">
+                <img src="../assets/img/x.png" alt="Email">
+            </div>
+        </div>
+
+        <div class="footer-links">
+            <h3>COMPRA</h3>
+            <ul>
+                <li><a href="#">Productos</a></li>
+                <li><a href="#">Precios</a></li>
+                <li><a href="#">Reembolso</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-links">
+            <h3>COMPAÑÍA</h3>
+            <ul>
+                <li><a href="#">Sobre Nosotros</a></li>
+                <li><a href="#">Contacto</a></li>
+                <li><a href="#">Noticias</a></li>
+                <li><a href="#">Soporte</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-newsletter">
+            <h3>NO TE PIERDAS LAS OFERTAS</h3>
+            <form>
+                <input type="email" placeholder="Ingresa tu correo">
+                <button type="submit">ENVIAR</button>
+            </form>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>Términos • Privacidad • Cookies</p>
+    </div>
+  </footer>
    
 
     
 <script src="../assets/js/vender.js"></script>
 <script src="../assets/js/scrpitInicio.js"></script>
+
 
 </body>
 </html>
