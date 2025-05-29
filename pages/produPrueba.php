@@ -123,21 +123,67 @@
                       const content = `
                       <div class="producto" data-id=${result.idCatalogo}>
                       <img class ="img-Chapter" src=../assets/img/${result.rutaImagen} alt="chapter">
-                        <h3> ${result.nombreProducto} </h3
+                        <h3> ${result.nombreProducto} </h3>
                         <p> ${result.precioP}</p>
                           <p> ${result.tallaP}</p>
                           <p class="descripcion">${result.descripcionDeProducto}</p>
-                          <button class="btn-megusta" >❤️</button>
+                          <button class="btn-megusta" 
+                            data-id="${result.idCatalogo}"
+                            data-name="${result.nombreProducto}"
+                            data-price="${result.precioP}"
+                            data-image="../assets/img/${result.rutaImagen}">
+                        ❤️
+                    </button>
                           <button onclick="addToCart(${result.idCatalogo}, '${result.nombreProducto}', '${result.precioP}', '../assets/img/${result.rutaImagen}')">Comprar</button>
                       </div>
                       `;
 
                       container.innerHTML += content;
                   })
+                   initializeFavorites();
               }
           });
            
         });
+
+        function initializeFavorites() {
+    const botonesMeGusta = document.querySelectorAll(".producto .btn-megusta");
+    let favoritos = JSON.parse(localStorage.getItem("meGusta")) || [];
+
+    botonesMeGusta.forEach(btn => {
+        const productId = btn.getAttribute('data-id');
+        const isFavorito = favoritos.some(item => item.id === productId);
+
+        // Establecer estado inicial del botón
+        btn.classList.toggle("activo", isFavorito);
+
+        btn.addEventListener("click", () => {
+            const product = {
+                id: productId,
+                name: btn.getAttribute('data-name'),
+                price: parseFloat(btn.getAttribute('data-price')),
+                image: btn.getAttribute('data-image')
+            };
+
+            let favoritos = JSON.parse(localStorage.getItem("meGusta")) || [];
+            const index = favoritos.findIndex(item => item.id === productId);
+
+            if (index === -1) {
+                // Añadir a favoritos
+                favoritos.push(product);
+                btn.classList.add("activo");
+                console.log("Producto añadido a favoritos:", product.name);
+            } else {
+                // Quitar de favoritos
+                favoritos.splice(index, 1);
+                btn.classList.remove("activo");
+                console.log("Producto removido de favoritos:", product.name);
+            }
+
+            localStorage.setItem("meGusta", JSON.stringify(favoritos));
+        });
+    });
+}
 
         
     </script>

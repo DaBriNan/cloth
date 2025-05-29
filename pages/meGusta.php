@@ -108,7 +108,11 @@
           </div>
           <div class="producto-actions">
             <button class="btn-megusta" data-id="${producto.id}">❤️</button>
-            <button class="btn-comprar" onclick="addToCart('${producto.id}', '${producto.name}', ${producto.price}, '${producto.image}')">Comprar</button>
+
+            <button class="btn-comprar" onclick="addToCart('${producto.id}', 
+            '${producto.name}', ${producto.price}, '${producto.image}', '${producto.description}')">Comprar</button>
+
+            
           </div>
         </div>
       `).join("");
@@ -148,6 +152,7 @@
   </button>
 
   <script src="../assets/js/chatbot.js"></script>
+  <!-- <script src="../assets/js/buy.js"></script> -->
 
 </body>
 </html>
