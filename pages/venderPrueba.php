@@ -43,12 +43,12 @@
     <!-- <a href="../pages/login.php" class="user">
         <img src="../assets/img/user.png" alt="login" class="imagen">
     </a> -->
-     <?php
+     <!-- <?php
         session_start();
         if(isset($_SESSION["Id"])){
             echo $_SESSION["Nom"];
         }
-     ?> 
+     ?>  -->
      <a href="../pages/logIn.php" class="user" id="login-btn">
         <img src="../assets/img/user.png" alt="login" class="imagen">
     </a>

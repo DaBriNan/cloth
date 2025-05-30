@@ -893,9 +893,11 @@ a{
 
 
   /* Icono del carrito */
-  .cart-icon {
+  /* Reemplaza el CSS del cart-icon por este: */
+
+.cart-icon {
     position: fixed;
-    top: 100px;
+    top: 180px; /* ← Movido más abajo para no tapar el header */
     right: 20px;
     background-color: #fff;
     border-radius: 50%;
@@ -903,8 +905,27 @@ a{
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     z-index: 1000;
-  }
-  
+    transition: all 0.3s ease; /* Agregamos transición suave */
+}
+
+/* Efecto hover para el carrito */
+.cart-icon:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive para el carrito */
+@media (max-width: 768px) {
+    .cart-icon {
+        top: 160px; /* En móvil un poco más arriba */
+        right: 15px;
+        padding: 10px;
+    }
+    
+    .cart-icon .material-symbols-outlined {
+        font-size: 24px; /* Icono más pequeño en móvil */
+    }
+}
   .cart-icon .material-symbols-outlined {
     font-size: 28px;
   }
