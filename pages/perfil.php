@@ -196,49 +196,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             box-shadow: 0 5px 15px rgba(111, 191, 209, 0.4);
         }
 
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .stat-card {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            border: 2px solid transparent;
-            transition: all 0.3s ease;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(111, 191, 209, 0.3);
-        }
-
-        .stat-icon {
-            font-size: 2.5em;
-            margin-bottom: 15px;
-            background: linear-gradient(135deg, #6fbfd1, #caebca);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .stat-number {
-            font-size: 2em;
-            font-weight: 700;
-            color: #333;
-            margin-bottom: 5px;
-        }
-
-        .stat-label {
-            color: #666;
-            font-size: 0.9em;
-        }
-
         .success-message {
             background: #d4edda;
             color: #155724;
@@ -248,43 +205,141 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             border: 1px solid #c3e6cb;
         }
 
-        .recent-activity {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 20px;
-            margin-top: 30px;
-        }
-
-        .activity-item {
-            display: flex;
-            align-items: center;
-            padding: 15px 0;
-            border-bottom: 1px solid #e9ecef;
-        }
-
-        .activity-item:last-child {
-            border-bottom: none;
-        }
-
-        .activity-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #6fbfd1, #caebca);
-            display: flex;
-            align-items: center;
+        /* ========== ESTILOS DEL MODAL DE LOGOUT ========== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            display: none;
             justify-content: center;
-            color: white;
-            margin-right: 15px;
+            align-items: center;
+            z-index: 10000;
+            animation: fadeIn 0.3s ease;
         }
 
-        .activity-text {
-            flex: 1;
+        .modal-overlay.show {
+            display: flex;
         }
 
-        .activity-time {
+        .modal-container {
+            background: white;
+            border-radius: 20px;
+            padding: 0;
+            max-width: 420px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.4s ease;
+            overflow: hidden;
+        }
+
+        .modal-content {
+            text-align: center;
+            padding: 40px 30px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        }
+
+        .logout-icon {
+            margin-bottom: 25px;
+        }
+
+        .logout-icon i {
+            font-size: 3.5em;
+            color: #ff6b6b;
+            text-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+            animation: shake 0.5s ease-in-out;
+        }
+
+        .modal-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .modal-message {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1em;
             color: #666;
-            font-size: 0.9em;
+            margin-bottom: 35px;
+            line-height: 1.5;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-logout, .btn-cancel {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 160px;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-logout {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+            color: white;
+        }
+
+        .btn-logout:hover {
+            background: linear-gradient(45deg, #ff7979, #ff6348);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+        }
+
+        .btn-cancel {
+            background: linear-gradient(45deg, #6c757d, #5a6268);
+            color: white;
+        }
+
+        .btn-cancel:hover {
+            background: linear-gradient(45deg, #7a8288, #6c757d);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(108, 117, 125, 0.4);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(50px) scale(0.9);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
         }
 
         @media (max-width: 768px) {
@@ -303,11 +358,70 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             .profile-header h1 {
                 font-size: 2em;
             }
+
+            .modal-container {
+                width: 95%;
+                margin: 20px;
+            }
+            
+            .modal-content {
+                padding: 30px 20px;
+            }
+            
+            .modal-title {
+                font-size: 1.5em;
+            }
+            
+            .modal-message {
+                font-size: 1em;
+            }
+            
+            .modal-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-logout, .btn-cancel {
+                width: 100%;
+                max-width: 250px;
+            }
+            
+            .logout-icon i {
+                font-size: 3em;
+            }
         }
     </style>
 </head>
 
 <body>
+    <!-- Modal de confirmación de logout -->
+    <div id="logoutConfirmModal" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-content">
+                <div class="logout-icon">
+                    <i class="fas fa-sign-out-alt"></i>
+                </div>
+                
+                <h2 class="modal-title">¿Cerrar Sesión?</h2>
+                <p class="modal-message">
+                    ¿Estás seguro de que quieres cerrar tu sesión, 
+                    <strong><?php echo htmlspecialchars($_SESSION["Nom"]); ?></strong>?
+                </p>
+                
+                <div class="modal-buttons">
+                    <button class="btn-logout" onclick="confirmLogout()">
+                        <i class="fas fa-sign-out-alt"></i>
+                        Sí, Cerrar Sesión
+                    </button>
+                    <button class="btn-cancel" onclick="cancelLogout()">
+                        <i class="fas fa-times"></i>
+                        Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Header con sistema de usuario -->
     <header class="barra-menu">
         <a href="../index.html">
@@ -323,62 +437,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </a>
 
         <!-- Usuario logueado -->
-        <!-- <div class="user-menu">
-            <button class="user user-button" onclick="toggleUserDropdown()">
-                <img src="../assets/img/user.png" alt="usuario" class="imagen">
-                <span class="user-name"><?php echo htmlspecialchars($_SESSION["Nom"]); ?></span>
-                <i class="fas fa-chevron-down"></i>
-            </button>
+        <div class="user-logged-section">
+            <!-- Información del usuario (avatar + nombre) -->
+            <div class="user-info">
+                <img src="../assets/img/user.png" alt="usuario" class="user-avatar">
+                <span class="user-name-display"><?php echo htmlspecialchars($_SESSION["Nom"]); ?></span>
+            </div>
             
-            <div class="user-dropdown" id="user-dropdown">
-                <div class="user-info">
-                    <h4><?php echo htmlspecialchars($_SESSION["Nom"]); ?></h4>
-                    <p>ID: <?php echo $_SESSION["Id"]; ?></p>
-                </div>
+            <!-- Botones de acción -->
+            <div class="user-actions">
+                <a href="perfil.php" class="action-btn profile-btn" title="Ver perfil">
+                    <i class="fas fa-user"></i>
+                    <span>Perfil</span>
+                </a>
                 
-                <a href="perfil.php" class="active">
-                    <i class="fas fa-user" style="margin-right: 8px;"></i>
-                    Mi Perfil
-                </a> -->
-                <!-- <a href="misPedidos.php">
-                    <i class="fas fa-shopping-bag" style="margin-right: 8px;"></i>
-                    Mis Pedidos
-                </a> -->
-                <!-- <a href="direcciones.php">
-                    <i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i>
-                    Mis Direcciones
-                </a> -->
-                <!-- <a href="configuracion.php">
-                    <i class="fas fa-cog" style="margin-right: 8px;"></i>
-                    Configuración
-                </a> -->
-                <!-- <a href="../backend/logout.php" class="logout-link" onclick="return confirmLogout()">
-                    <i class="fas fa-sign-out-alt logout-icon" style="margin-right: 8px;"></i>
-                    Cerrar Sesión
+                <!-- ⚡ BOTÓN ACTUALIZADO CON MODAL -->
+                <a href="#" class="action-btn logout-btn" title="Cerrar sesión" onclick="showLogoutModal(); return false;">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Salir</span>
                 </a>
             </div>
-        </div> -->
-        <div class="user-logged-section">
-        <!-- Información del usuario (avatar + nombre) -->
-        <div class="user-info">
-            <img src="../assets/img/user.png" alt="usuario" class="user-avatar">
-            <span class="user-name-display"><?php echo htmlspecialchars($_SESSION["Nom"]); ?></span>
         </div>
-        
-        <!-- Botones de acción -->
-        <div class="user-actions">
-            <a href="perfil.php" class="action-btn profile-btn" title="Ver perfil">
-                <i class="fas fa-user"></i>
-                <span>Perfil</span>
-            </a>
-            
-            <a href="#" class="action-btn logout-btn" title="Cerrar sesión"
-               onclick="if(confirm('¿Cerrar sesión?')) { window.location.href='../backend/logout.php'; } return false;">
-                <i class="fas fa-sign-out-alt"></i>
-                <span>Salir</span>
-            </a>
-        </div>
-    </div>
     </header>
 
     <div class="profile-container">
@@ -391,39 +470,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <p> • ID: <?php echo $_SESSION["Id"]; ?></p>
         </div>
 
-        <!-- Estadísticas rápidas -->
-         <!-- esto ahorita no pero quiero que funcione ya despues de que entregue -->
-        <!-- <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-icon">
-                    <i class="fas fa-shopping-bag"></i>
-                </div>
-                <div class="stat-number">12</div>
-                <div class="stat-label">Compras realizadas</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon">
-                    <i class="fas fa-heart"></i>
-                </div>
-                <div class="stat-number">8</div>
-                <div class="stat-label">Productos favoritos</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon">
-                    <i class="fas fa-star"></i>
-                </div>
-                <div class="stat-number">4.8</div>
-                <div class="stat-label">Calificación promedio</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon">
-                    <i class="fas fa-coins"></i>
-                </div>
-                <div class="stat-number">$2,450</div>
-                <div class="stat-label">Total gastado</div>
-            </div>
-        </div> -->
-
         <!-- Contenido principal -->
         <div class="profile-content">
             <!-- Sidebar -->
@@ -432,27 +478,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <i class="fas fa-user"></i>
                     Información Personal
                 </a>
-                <!-- <a href="misPedidos.php" class="sidebar-item">
-                    <i class="fas fa-shopping-bag"></i>
-                    Mis Pedidos
-                </a>
-                <a href="meGusta.php" class="sidebar-item">
-                    <i class="fas fa-heart"></i>
-                    Favoritos
-                </a>
-                <a href="#" class="sidebar-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    Direcciones
-                </a>
-                <a href="#" class="sidebar-item">
-                    <i class="fas fa-credit-card"></i>
-                    Métodos de Pago
-                </a> -->
-                <!-- <a href="#" class="sidebar-item">
-                    <i class="fas fa-cog"></i>
-                    Configuración
-                </a> -->
-                <a href="../backend/logout.php" class="sidebar-item" onclick="return confirmLogout()">
+                
+                <!-- ⚡ ENLACE ACTUALIZADO CON MODAL -->
+                <a href="#" class="sidebar-item" onclick="showLogoutModal(); return false;">
                     <i class="fas fa-sign-out-alt"></i>
                     Cerrar Sesión
                 </a>
@@ -499,47 +527,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <input type="text" id="cp" name="cp" 
                                value="<?php echo htmlspecialchars($_SESSION["Cp"] ?? ''); ?>">
                     </div>
-<!-- 
-                    <button type="submit" name="update_profile" class="btn-primary">
+
+                    <!-- <button type="submit" name="update_profile" class="btn-primary">
                         <i class="fas fa-save"></i> Guardar Cambios
                     </button> -->
                 </form>
-
-                <!-- Actividad reciente -->
-                 <!-- tambien quiero que funcione pero no en este momento -->
-                <!-- <div class="recent-activity">
-                    <h3>Actividad Reciente</h3>
-                    <div class="activity-item">
-                        <div class="activity-icon">
-                            <i class="fas fa-shopping-cart"></i>
-                        </div>
-                        <div class="activity-text">
-                            <strong>Compra realizada</strong><br>
-                            Jersey Real Madrid - $499 MXN
-                        </div>
-                        <div class="activity-time">Hace 2 días</div>
-                    </div>
-                    <div class="activity-item">
-                        <div class="activity-icon">
-                            <i class="fas fa-heart"></i>
-                        </div>
-                        <div class="activity-text">
-                            <strong>Producto añadido a favoritos</strong><br>
-                            Hoodie Nike
-                        </div>
-                        <div class="activity-time">Hace 1 semana</div>
-                    </div>
-                    <div class="activity-item">
-                        <div class="activity-icon">
-                            <i class="fas fa-user-edit"></i>
-                        </div>
-                        <div class="activity-text">
-                            <strong>Perfil actualizado</strong><br>
-                            Información de contacto modificada
-                        </div>
-                        <div class="activity-time">Hace 2 semanas</div>
-                    </div>
-                </div> -->
             </div>
         </div>
     </div>
@@ -589,10 +581,45 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </footer>
 
-  <script>
-function confirmLogout() {
-    return confirm('¿Estás seguro que deseas cerrar sesión?');
-}
-</script>
+    <!-- logout -->
+    <script>
+    // Mostrar modal de confirmación de logout
+    function showLogoutModal() {
+        const modal = document.getElementById('logoutConfirmModal');
+        modal.classList.add('show');
+        
+        // Cerrar modal si se hace clic fuera de él
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                cancelLogout();
+            }
+        });
+    }
+
+    // Confirmar logout - proceder con el cierre de sesión
+    function confirmLogout() {
+        const modal = document.getElementById('logoutConfirmModal');
+        modal.classList.remove('show');
+        
+        // Redirigir al logout
+        window.location.href = '../backend/logout.php';
+    }
+
+    // Cancelar logout - cerrar modal sin hacer nada
+    function cancelLogout() {
+        const modal = document.getElementById('logoutConfirmModal');
+        modal.classList.remove('show');
+    }
+
+    // Cerrar modal con tecla ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            const modal = document.getElementById('logoutConfirmModal');
+            if (modal.classList.contains('show')) {
+                cancelLogout();
+            }
+        }
+    });
+    </script>
 </body>
 </html>
