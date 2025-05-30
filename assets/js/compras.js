@@ -131,8 +131,9 @@ function eliminarProductos(ids) {
         data: { func: 'deleteChapter', id: JSON.stringify(ids) },
         success: function (data) {
             
-            alert("¡Gracias por tu compra! Tu pedido ha sido registrado.")
+            //alert("¡Gracias por tu compra! Tu pedido ha sido registrado.")
             clearCart()
+            showPurchaseSuccessModal();
             //window.location.href = "../pages/produPrueba.php";
         },
         error: function (error) {
@@ -141,3 +142,17 @@ function eliminarProductos(ids) {
         }
     });
 }
+// function eliminarProductos(ids) {
+//     $.ajax({
+//         type: 'POST',
+//         url: '../backend/comprar.php',
+//         data: { func: 'deleteChapter', id: JSON.stringify(ids) },
+//         success: function (data) {
+//             clearCart();
+//             showPurchaseSuccessModal();
+//         },
+//         error: function (error) {
+//             alert("Error al intentar hacer la compra, intenta más tarde");
+//         }
+//     });
+// }
