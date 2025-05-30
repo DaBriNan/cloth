@@ -17,15 +17,7 @@
     <a href="../index.html">
       <img src="../assets/img/logoFinal.png" class="imgMenu" alt="Inicio">
     </a>
-    <div class="container">
-      <form action="" class="search-form">
-        <input type="text" placeholder="Buscar..." class="search-input" />
-        <div class="search-button">
-          <i class="fa-solid fa-magnifying-glass search-icon"></i>
-          <i class="fa-solid fa-xmark search-close"></i>
-        </div>
-      </form>
-    </div>
+   
     <a href="../pages/venderPrueba.php" class="vender"><span class="texto">Vender</span></a>
     <a href="../pages/produPrueba.php" class="comprar"><span class="textoc">Comprar</span></a>
     <a href="../pages/paraTiP.php" class="paraTi"><span class="textop">Para ti</span></a>

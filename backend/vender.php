@@ -52,7 +52,7 @@ if(isset($_POST["submit"])){
                 exit();
             }
             
-            header("location: ../pages/venderPrueba.php");
+            header("location: ../pages/produPrueba.php");
             exit();
             
              
