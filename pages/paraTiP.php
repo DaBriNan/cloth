@@ -1,3 +1,5 @@
+<?php
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -5,151 +7,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Para Ti | ClothEasy</title>
     <link rel="icon" type="image/x-icon" href="../assets/img/logoFinal.png">
-    <link rel="stylesheet" href="../assets/estilos/paraTi.css" />
-    <link rel="stylesheet" href="clotheS.css">
-
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="assets/img/faviconClo.png">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
-
-    <!-- Swiper CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="../assets/estilos/paraTi.css" />
+    <link rel="stylesheet" href="clotheS.css" />
 </head>
 <body>
-
-    <!-- barra-menu -->
+    <!-- Header - Tu estructura original -->
     <header class="barra-menu">
         <a href="../index.html">
             <img src="../assets/img/logoFinal.png" class="imgMenu" alt="Inicio" />
         </a>
         <div class="container">
-      
             <form action="" class="search-form">
-              <input type="text" placeholder="Buscar..." class="search-input" />
-      
-              <div class="search-button">
-                <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                <i class="fa-solid fa-xmark search-close"></i>
-              </div>
+                <input type="text" placeholder="Buscar..." class="search-input" />
+                <div class="search-button">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <i class="fa-solid fa-xmark search-close"></i>
+                </div>
             </form>
         </div>
         <a href="../pages/venderPrueba.php" class="vender"><span class="texto">Vender</span></a>
         <a href="../pages/produPrueba.php" class="comprar"><span class="textoc">Comprar</span></a>
         <a href="../pages/paraTiP.php" class="paraTi"><span class="textop">Para ti</span></a>
-
-         <a href="../pages/meGusta.php" class="meGusta">
+        
+        <a href="../pages/meGusta.php" class="meGusta">
             <img src="../assets/img/Heart.png" alt="meGusta" class="imagen">
         </a>
         
-        <!-- <a href="../pages/logIn.php" class="user">
+        <a href="../pages/logIn.php" class="user" id="login-btn">
             <img src="../assets/img/user.png" alt="login" class="imagen">
         </a>
-         <?php
-        session_start();
-        if(isset($_SESSION["Id"])){
-            echo $_SESSION["Nom"];
-        }
-     ?> -->
-     <a href="../pages/logIn.php" class="user" id="login-btn">
-        <img src="../assets/img/user.png" alt="login" class="imagen">
-    </a>
 
-    <!-- Sección de usuario logueado (oculta por defecto) -->
-    <div class="user-logged-section" id="user-logged-section" style="display: none;">
-        <!-- Información del usuario (avatar + nombre) -->
-        <div class="user-info">
-            <img src="../assets/img/user.png" alt="usuario" class="user-avatar">
-            <span class="user-name-display" id="user-name-display">Usuario</span>
+        <!-- Sección de usuario logueado (tu código original) -->
+        <div class="user-logged-section" id="user-logged-section" style="display: none;">
+            <div class="user-info">
+                <img src="../assets/img/user.png" alt="usuario" class="user-avatar">
+                <span class="user-name-display" id="user-name-display">Usuario</span>
+            </div>
+            <div class="user-actions">
+                <a href="../pages/perfil.php" class="action-btn profile-btn" title="Ver perfil">
+                    <i class="fas fa-user"></i>
+                    <span>Perfil</span>
+                </a>
+                <a href="#" class="action-btn logout-btn" title="Cerrar sesión"
+                   onclick="if(confirm('¿Cerrar sesión?')) { window.location.href='../backend/logout.php'; } return false;">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Salir</span>
+                </a>
+            </div>
         </div>
-        
-        <!-- Botones de acción -->
-        <div class="user-actions">
-            <a href="../pages/perfil.php" class="action-btn profile-btn" title="Ver perfil">
-                <i class="fas fa-user"></i>
-                <span>Perfil</span>
-            </a>
-            
-            <a href="#" class="action-btn logout-btn" title="Cerrar sesión"
-               onclick="if(confirm('¿Cerrar sesión?')) { window.location.href='../backend/logout.php'; } return false;">
-                <i class="fas fa-sign-out-alt"></i>
-                <span>Salir</span>
-            </a>
-        </div>
-    </div>
-
-    <script>
-// Verificar sesión al cargar la página
-document.addEventListener('DOMContentLoaded', function() {
-    checkUserSession();
-});
-
-// Verificar si hay una sesión activa
-function checkUserSession() {
-    fetch('../backend/check_session.php') // ← Nota la ruta con ../
-        .then(response => response.json())
-        .then(data => {
-            console.log('Session data:', data);
-            
-            if (data.loggedIn && data.user) {
-                showLoggedInUser(data.user);
-            } else {
-                showLoggedOutUser();
-            }
-        })
-        .catch(error => {
-            console.log('Error verificando sesión:', error);
-            showLoggedOutUser();
-        });
-}
-
-// Mostrar usuario logueado
-function showLoggedInUser(user) {
-    const loginBtn = document.getElementById('login-btn');
-    const userSection = document.getElementById('user-logged-section');
-    const userNameDisplay = document.getElementById('user-name-display');
-    
-    // Ocultar botón de login
-    if (loginBtn) loginBtn.style.display = 'none';
-    
-    // Mostrar sección de usuario logueado
-    if (userSection) userSection.style.display = 'flex';
-    
-    // Mostrar nombre del usuario
-    if (userNameDisplay) userNameDisplay.textContent = user.name || 'Usuario';
-    
-    console.log('Usuario logueado:', user.name);
-}
-
-// Mostrar usuario NO logueado
-function showLoggedOutUser() {
-    const loginBtn = document.getElementById('login-btn');
-    const userSection = document.getElementById('user-logged-section');
-    
-    // Mostrar botón de login
-    if (loginBtn) loginBtn.style.display = 'inline-flex';
-    
-    // Ocultar sección de usuario logueado
-    if (userSection) userSection.style.display = 'none';
-    
-    console.log('Usuario no logueado');
-}
-</script>
-
-     
     </header>
 
+  <br>
+     
+    <!-- Filtros de categoría -->
+    <nav class="categorias-menu">
+        <button class="activo" onclick="filtrarCategoria('todos')">Todos</button>
+        <button onclick="filtrarCategoria('hombre')">Hombre</button>
+        <button onclick="filtrarCategoria('mujer')">Mujer</button>
+        <button onclick="filtrarCategoria('nino')">Niño</button>
+    </nav>
+
+    <!-- Carrito flotante -->
     <div class="cart-icon" id="cartIcon">
         <span class="material-symbols-outlined">shopping_cart</span>
         <span class="cart-count" id="cartCount">0</span>
-      </div>
-      
-      <div class="cart-container" id="cartContainer">
+    </div>
+
+    <div class="cart-container" id="cartContainer">
         <div class="cart-header">
             <h2>Tu Carrito</h2>
             <span class="close-cart" id="closeCart">×</span>
@@ -161,217 +88,286 @@ function showLoggedOutUser() {
             </div>
             <button class="checkout-btn" id="checkoutBtn">Finalizar Compra</button>
         </div>
-      </div>
-      
-        <div class="overlay" id="overlay"></div>
+    </div>
 
-    <!-- barra-horizontal -->
+    <div class="overlay" id="overlay"></div>
 
+    <!-- Grid de productos - EXACTAMENTE como en productos dinámico -->
+    <main id="productosContainer" class="productos-grid">
+        <div class="producto hombre" data-id="1">
+            <img class="img-Chapter" src="../assets/img/amiri camisa.webp" alt="chapter">
+            <h3>Camisa Amiri</h3>
+            <p>$ 230</p>
+            <p>TALLA M</p>
+            <p class="descripcion">DESCRIPCION: Camisa de alta calidad con diseño único y detalles premium</p>
+            <button class="btn-megusta" data-id="1" data-name="Camisa Amiri" data-price="230" data-image="../assets/img/amiri camisa.webp">❤️</button>
+            <button onclick="addToCart(1, 'Camisa Amiri', '230', '../assets/img/amiri camisa.webp')">🛒 Añadir</button>
+        </div>
 
-    <!-- <nav class="categorias-menu">
-        <button onclick="filtrarCategoria('Todo')">Todo</button>
-        <button onclick="filtrarCategoria('Chamarras')">Chamarras</button>
-        <button onclick="filtrarCategoria('Camisas')">Camisas</button>
-        <button onclick="filtrarCategoria('Calzado')">Calzado</button>
-        <button onclick="filtrarCategoria('Accesorios')">Accesorios</button>
-      </nav> -->
- 
-            <main id="productosContainer" class="productos-grid">
-    
-                <div class="producto hombre">
-                  <div class="imagen-contenedor">
-                    <img src="../assets/img/amiri camisa.webp" alt="Playera Amiri">
-                  </div>
-                  <h3>Camisa Amiri</h3>
-                  <p>$230 MXN</p>
-                  <p>Talla: M</p>
-                  <button class="btn-megusta" data-id="1" data-name="Playera Amiri" data-price="230" data-image="/assets/img/amiri camisa.webp">❤️</button>
-                  <!-- <button onclick="addToCart(1,'Playera Amiri', 230, '/assets/img/amiri camisa.webp')">Comprar</button> -->
+        <div class="producto hombre" data-id="2">
+            <img class="img-Chapter" src="../assets/img/saint.webp" alt="chapter">
+            <h3>Playera Estampada</h3>
+            <p>$ 350</p>
+            <p>TALLA S</p>
+            <p class="descripcion">DESCRIPCION: Playera con estampado exclusivo y materiales de primera calidad</p>
+            <button class="btn-megusta" data-id="2" data-name="Playera Estampada" data-price="350" data-image="../assets/img/saint.webp">❤️</button>
+            <button onclick="addToCart(2, 'Playera Estampada', '350', '../assets/img/saint.webp')">🛒 Añadir</button>
+        </div>
+
+        <div class="producto hombre" data-id="3">
+            <img class="img-Chapter" src="../assets/img/mezclilla squared.webp" alt="chapter">
+            <h3>Chamarra DSQUARED2</h3>
+            <p>$ 590</p>
+            <p>TALLA M</p>
+            <p class="descripcion">DESCRIPCION: Chamarra de mezclilla premium con acabados de lujo y diseño moderno</p>
+            <button class="btn-megusta" data-id="3" data-name="Chamarra DSQUARED2" data-price="590" data-image="../assets/img/mezclilla squared.webp">❤️</button>
+            <button onclick="addToCart(3, 'Chamarra DSQUARED2', '590', '../assets/img/mezclilla squared.webp')">🛒 Añadir</button>
+        </div>
+
+        <div class="producto mujer" data-id="4">
+            <img class="img-Chapter" src="../assets/img/sandro.webp" alt="chapter">
+            <h3>Chamarra Sandro</h3>
+            <p>$ 450</p>
+            <p>TALLA L</p>
+            <p class="descripcion">DESCRIPCION: Elegante chamarra Sandro con corte femenino y detalles sofisticados</p>
+            <button class="btn-megusta" data-id="4" data-name="Chamarra Sandro" data-price="450" data-image="../assets/img/sandro.webp">❤️</button>
+            <button onclick="addToCart(4, 'Chamarra Sandro', '450', '../assets/img/sandro.webp')">🛒 Añadir</button>
+        </div>
+
+        <div class="producto nino" data-id="5">
+            <img class="img-Chapter" src="../assets/img/playera cdg.webp" alt="chapter">
+            <h3>Playera CDG</h3>
+            <p>$ 100</p>
+            <p>TALLA S</p>
+            <p class="descripcion">DESCRIPCION: Playera Comme des Garçons con el icónico logo de corazón</p>
+            <button class="btn-megusta" data-id="5" data-name="Playera CDG" data-price="100" data-image="../assets/img/playera cdg.webp">❤️</button>
+            <button onclick="addToCart(5, 'Playera CDG', '100', '../assets/img/playera cdg.webp')">🛒 Añadir</button>
+        </div>
+
+        <div class="producto mujer" data-id="6">
+            <img class="img-Chapter" src="../assets/img/playera casa blanca.webp" alt="chapter">
+            <h3>Playera Casa Blanca</h3>
+            <p>$ 325</p>
+            <p>TALLA S</p>
+            <p class="descripcion">DESCRIPCION: Playera blanca minimalista con diseño clean y corte perfecto</p>
+            <button class="btn-megusta" data-id="6" data-name="Playera Casa Blanca" data-price="325" data-image="../assets/img/playera casa blanca.webp">❤️</button>
+            <button onclick="addToCart(6, 'Playera Casa Blanca', '325', '../assets/img/playera casa blanca.webp')">🛒 Añadir</button>
+        </div>
+
+        <div class="producto mujer" data-id="7">
+            <img class="img-Chapter" src="../assets/img/sueter all saints.webp" alt="chapter">
+            <h3>Suéter All Saints</h3>
+            <p>$ 500</p>
+            <p>TALLA M</p>
+            <p class="descripcion">DESCRIPCION: Suéter de la marca británica All Saints con tejido de alta calidad</p>
+            <button class="btn-megusta" data-id="7" data-name="Suéter All Saints" data-price="500" data-image="../assets/img/sueter all saints.webp">❤️</button>
+            <button onclick="addToCart(7, 'Suéter All Saints', '500', '../assets/img/sueter all saints.webp')">🛒 Añadir</button>
+        </div>
+
+        <div class="producto hombre" data-id="8">
+            <img class="img-Chapter" src="../assets/img/playera palm.webp" alt="chapter">
+            <h3>Playera Palm Angels</h3>
+            <p>$ 299</p>
+            <p>TALLA L</p>
+            <p class="descripcion">DESCRIPCION: Playera Palm Angels con gráficos únicos y estilo streetwear premium</p>
+            <button class="btn-megusta" data-id="8" data-name="Playera Palm Angels" data-price="299" data-image="../assets/img/playera palm.webp">❤️</button>
+            <button onclick="addToCart(8, 'Playera Palm Angels', '299', '../assets/img/playera palm.webp')">🛒 Añadir</button>
+        </div>
+
+        <div class="producto mujer" data-id="9">
+            <img class="img-Chapter" src="../assets/img/denim.webp" alt="chapter">
+            <h3>Hoodie Denim Tears</h3>
+            <p>$ 600</p>
+            <p>TALLA 32</p>
+            <p class="descripcion">DESCRIPCION: Sudadera con capucha de la marca Denim Tears con diseño artístico único</p>
+            <button class="btn-megusta" data-id="9" data-name="Hoodie Denim Tears" data-price="600" data-image="../assets/img/denim.webp">❤️</button>
+            <button onclick="addToCart(9, 'Hoodie Denim Tears', '600', '../assets/img/denim.webp')">🛒 Añadir</button>
+        </div>
+
+        <div class="producto mujer" data-id="10">
+            <img class="img-Chapter" src="../assets/img/Legacy Camisa.webp" alt="chapter">
+            <h3>Camisa Legacy</h3>
+            <p>$ 750</p>
+            <p>TALLA S</p>
+            <p class="descripcion">DESCRIPCION: Camisa Legacy con corte elegante y materiales premium para ocasiones especiales</p>
+            <button class="btn-megusta" data-id="10" data-name="Camisa Legacy" data-price="750" data-image="../assets/img/Legacy Camisa.webp">❤️</button>
+            <button onclick="addToCart(10, 'Camisa Legacy', '750', '../assets/img/Legacy Camisa.webp')">🛒 Añadir</button>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <h2>CLOTHEASY</h2>
+                <p>REDES SOCIALES</p>
+                <div class="social-icons">
+                    <img src="../assets/img/facebook.png" alt="Facebook">
+                    <img src="../assets/img/instagram.png" alt="Instagram">
+                    <img src="../assets/img/x.png" alt="Email">
                 </div>
-            
-                
-                <div class="producto hombre">
-                  <div class="imagen-contenedor">
-                    <img src="../assets/img/saint.webp" alt="Playera Estampada">
-                  </div>
-                  <h3>Playera Estampada</h3>
-                  <p>$350 MXN</p>
-                  <p>Talla: S</p>
-                  <button class="btn-megusta" data-id="2" data-name="Playera Estampada" data-price="350" data-image="/assets/img/saint.webp">❤️</button>
-                  <!-- <button onclick="addToCart(2,'Playera Estampada', 350, '/assets/img/saint.webp')">Comprar</button> -->
-                </div>
-            
-                
-                <div class="producto hombre">
-                  <div class="imagen-contenedor">
-                    <img src="../assets/img/mezclilla squared.webp" alt="Chamarra Mezclilla">
-                  </div>
-                  <h3>Chamarra DSQUARED2</h3>
-                  <p>$590 MXN</p>
-                  <p>Talla: M</p>
-                  <button class="btn-megusta" data-id="3" data-name="Chamarra DSQUARED" data-price="590" data-image="/assets/img/mezclilla squared.webp">❤️</button>
-                  <!-- <button onclick="addToCart(3,'Chamarra DSQUARED', 590, '/assets/img/mezclilla squared.webp')">Comprar</button> -->
-                </div>
-            
-                
-                <div class="producto mujer">
-                  <div class="imagen-contenedor">
-                    <img src="../assets/img/sandro.webp" alt="Sandro">
-                  </div>
-                  <h3>Chamarra Sandro</h3>
-                  <p>$450 MXN</p>
-                  <p>Talla: L</p>
-                  <button class="btn-megusta" data-id="4" data-name="Sandro" data-price="450" data-image="/assets/img/sandro.webp">❤️</button>
-                  <!-- <button onclick="addToCart(4,'Sandro', 450, '/assets/img/sandro.webp')">Comprar</button> -->
-                </div>
-            
-                
-                <div class="producto nino">
-                  <div class="imagen-contenedor">
-                    <img src="../assets/img/playera cdg.webp" alt="Playera CDG">
-                  </div>
-                  <h3>Playera CDG</h3>
-                  <p>$100 MXN</p>
-                  <p>Talla: S</p>
-                  <button class="btn-megusta" data-id="5" data-name="Playera CDG" data-price="100" data-image="/assets/img/playera cdg.webp">❤️</button>
-                  <!-- <button onclick="addToCart(5,'Playera CDG', 100, '/assets/img/playera cdg.webp')">Comprar</button> -->
-                </div>
-            
-                
-                <div class="producto mujer">
-                  <div class="imagen-contenedor">
-                    <img src="../assets/img/playera casa blanca.webp" alt="Casa Blanca">
-                  </div>
-                  <h3>Playera Casa Blanca</h3>
-                  <p>$325 MXN</p>
-                  <p>Talla: S</p>
-                  <button class="btn-megusta" data-id="6" data-name="Playera Casa Blanca" data-price="325" data-image="/assets/img/playera casa blanca.webp">❤️</button>
-                  <!-- <button onclick="addToCart(6,'Playera Casa Blanca', 325, '/assets/img/playera casa blanca.webp')">Comprar</button> -->
-                </div>
-            
-                
-                <div class="producto mujer">
-                  <div class="imagen-contenedor">
-                    <img src="../assets/img/sueter all saints.webp" alt="All Saints">
-                  </div>
-                  <h3>Suéter All Saints</h3>
-                  <p>$500 MXN</p>
-                  <p>Talla: M</p>
-                  <button class="btn-megusta" data-id="7" data-name="All Saints" data-price="50" data-image="/assets/img/sueter all saints.webp">❤️</button>
-                  <!-- <button onclick="addToCart(7,'All Saints', 50, '/assets/img/sueter all saints.webp')">Comprar</button> -->
-                </div>
-            
-                
-                <div class="producto hombre">
-                  <div class="imagen-contenedor">
-                    <img src="../assets/img/playera palm.webp" alt="Playera Palm">
-                  </div>
-                  <h3>Playera Palm Angels</h3>
-                  <p>$299 MXN</p>
-                  <p>Talla: L</p>
-                  <button class="btn-megusta" data-id="8" data-name="Playera Palm" data-price="25" data-image="/assets/img/playera palm.webp">❤️</button>
-                  <!-- <button onclick="addToCart(8,'Playera Palm', 25, '/assets/img/playera palm.webp')">Comprar</button> -->
-                </div>
-            
-                
-                <div class="producto mujer">
-                  <div class="imagen-contenedor">
-                    <img src="../assets/img/denim.webp" alt="Denim">
-                  </div>
-                  <h3>Hoodie Denim Tears</h3>
-                  <p>$600 MXN</p>
-                  <p>Talla: 32</p>
-                  <button class="btn-megusta" data-id="9" data-name="Denim" data-price="100" data-image="/assets/img/denim.webp">❤️</button>
-                  <!-- <button onclick="addToCart(9,'Denim', 100, '/assets/img/denim.webp')">Comprar</button> -->
-                </div>
-            
-                
-                <div class="producto mujer">
-                  <div class="imagen-contenedor">
-                    <img src="../assets/img/Legacy Camisa.webp" alt="Camisa Legacy">
-                  </div>
-                  <h3>Camisa Legacy</h3>
-                  <p>$750 MXN</p>
-                  <p>Talla: S</p>
-                  <button class="btn-megusta" data-id="10" data-name="Camisa" data-price="750" data-image="/assets/img/Legacy Camisa.webp">❤️</button>
-                  <!-- <button onclick="addToCart(10,'CamisaLegacy', 750, '/assets/img/Legacy Camisa.webp')">Comprar</button> -->
-                </div>
-            
-                <div class="product-list" id="productos-container">
-                </div>
-            </main>
-            <footer class="footer">
-                <div class="footer-container">
-                    <div class="footer-logo">
-                        <h2>CLOTHEASY</h2>
-                        <p>REDES SOCIALES</p>
-                        <div class="social-icons">
-                            <img src="../assets/img/facebook.png" alt="Facebook">
-                            <img src="../assets/img/instagram.png" alt="Instagram">
-                            <img src="../assets/img/x.png" alt="Email">
-                        </div>
-                    </div>
-        
-                    <div class="footer-links">
-                        <h3>COMPRA</h3>
-                        <ul>
-                            <li><a href="#">Productos</a></li>
-                            <li><a href="#">Precios</a></li>
-                            <li><a href="#">Reembolso</a></li>
-                        </ul>
-                    </div>
-        
-                    <div class="footer-links">
-                        <h3>COMPAÑÍA</h3>
-                        <ul>
-                            <li><a href="#">Sobre Nosotros</a></li>
-                            <li><a href="#">Contacto</a></li>
-                            <li><a href="#">Noticias</a></li>
-                            <li><a href="#">Soporte</a></li>
-                        </ul>
-                    </div>
-        
-                    <div class="footer-newsletter">
-                        <h3>NO TE PIERDAS LAS OFERTAS</h3>
-                        <form>
-                            <input type="email" placeholder="Ingresa tu correo">
-                            <button type="submit">ENVIAR</button>
-                        </form>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    <p>Términos • Privacidad • Cookies</p>
-                </div>
-            </footer>
-        
-   
-                
-      
+            </div>
+
+            <div class="footer-links">
+                <h3>COMPRA</h3>
+                <ul>
+                    <li><a href="#">Productos</a></li>
+                    <li><a href="#">Precios</a></li>
+                    <li><a href="#">Reembolso</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h3>COMPAÑÍA</h3>
+                <ul>
+                    <li><a href="#">Sobre Nosotros</a></li>
+                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#">Noticias</a></li>
+                    <li><a href="#">Soporte</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-newsletter">
+                <h3>NO TE PIERDAS LAS OFERTAS</h3>
+                <form>
+                    <input type="email" placeholder="Ingresa tu correo">
+                    <button type="submit">ENVIAR</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Términos • Privacidad • Cookies</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
     <script src="../assets/js/log.js"></script>
     <script src="../assets/js/buy.js"></script>
     <script src="../assets/js/scrpitInicio.js"></script>
     <script src="../assets/js/meGusta.js"></script>
     <script src="../assets/js/favs.js"></script>
 
-</script>
+    <script>
+        // Tu script de verificación de sesión original
+        document.addEventListener('DOMContentLoaded', function() {
+            checkUserSession();
+            initializeFavorites();
+        });
 
-<div id="ai-chat-container">
-  <div id="ai-chat-header">
-    <span>🛍️ Asistente ClothEasy</span>
-    <button id="close-chat">×</button>
-  </div>
-  <div id="ai-chat-messages"></div>
-  <div class="chat-input-container">
-    <input type="text" id="ai-chat-input" placeholder="Escribe tu pregunta...">
-    <button id="ai-send-btn">Enviar</button>
-  </div>
-</div>
+        function checkUserSession() {
+            fetch('../backend/check_session.php')
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Session data:', data);
+                    
+                    if (data.loggedIn && data.user) {
+                        showLoggedInUser(data.user);
+                    } else {
+                        showLoggedOutUser();
+                    }
+                })
+                .catch(error => {
+                    console.log('Error verificando sesión:', error);
+                    showLoggedOutUser();
+                });
+        }
 
-<button id="open-chat">
-  <i class="fas fa-robot"></i>
-</button>
+        function showLoggedInUser(user) {
+            const loginBtn = document.getElementById('login-btn');
+            const userSection = document.getElementById('user-logged-section');
+            const userNameDisplay = document.getElementById('user-name-display');
+            
+            if (loginBtn) loginBtn.style.display = 'none';
+            if (userSection) userSection.style.display = 'flex';
+            if (userNameDisplay) userNameDisplay.textContent = user.name || 'Usuario';
+            
+            console.log('Usuario logueado:', user.name);
+        }
 
-<script src="../assets/js/chatbot.js"></script>
+        function showLoggedOutUser() {
+            const loginBtn = document.getElementById('login-btn');
+            const userSection = document.getElementById('user-logged-section');
+            
+            if (loginBtn) loginBtn.style.display = 'inline-flex';
+            if (userSection) userSection.style.display = 'none';
+            
+            console.log('Usuario no logueado');
+        }
 
+        // Función de filtrado de categorías
+        function filtrarCategoria(categoria) {
+            const productos = document.querySelectorAll('.producto');
+            const filterBtns = document.querySelectorAll('.categorias-menu button');
+            
+            // Actualizar botones activos
+            filterBtns.forEach(btn => btn.classList.remove('activo'));
+            event.target.classList.add('activo');
+            
+            // Filtrar productos
+            productos.forEach(producto => {
+                if (categoria === 'todos' || producto.classList.contains(categoria)) {
+                    producto.style.display = 'block';
+                } else {
+                    producto.style.display = 'none';
+                }
+            });
+        }
+
+        // Función para agregar al carrito
+        function addToCart(id, name, price, image) {
+            console.log('Agregando al carrito:', {id, name, price, image});
+            
+            // Efecto visual del botón
+            const btn = event.target;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '✓ Agregado';
+            btn.style.background = 'linear-gradient(45deg, #4CAF50, #45a049)';
+            
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.style.background = '';
+            }, 2000);
+        }
+
+        // Inicializar favoritos - EXACTAMENTE como en productos
+        function initializeFavorites() {
+            const botonesMeGusta = document.querySelectorAll(".producto .btn-megusta");
+            let favoritos = JSON.parse(localStorage.getItem("meGusta")) || [];
+
+            botonesMeGusta.forEach(btn => {
+                const productId = btn.getAttribute('data-id');
+                const isFavorito = favoritos.some(item => item.id === productId);
+
+                // Establecer estado inicial del botón
+                btn.classList.toggle("activo", isFavorito);
+
+                btn.addEventListener("click", () => {
+                    const product = {
+                        id: productId,
+                        name: btn.getAttribute('data-name'),
+                        price: parseFloat(btn.getAttribute('data-price')),
+                        image: btn.getAttribute('data-image')
+                    };
+
+                    let favoritos = JSON.parse(localStorage.getItem("meGusta")) || [];
+                    const index = favoritos.findIndex(item => item.id === productId);
+
+                    if (index === -1) {
+                        // Añadir a favoritos
+                        favoritos.push(product);
+                        btn.classList.add("activo");
+                        console.log("Producto añadido a favoritos:", product.name);
+                    } else {
+                        // Quitar de favoritos
+                        favoritos.splice(index, 1);
+                        btn.classList.remove("activo");
+                        console.log("Producto removido de favoritos:", product.name);
+                    }
+
+                    localStorage.setItem("meGusta", JSON.stringify(favoritos));
+                });
+            });
+        }
+    </script>
 </body>
 </html>

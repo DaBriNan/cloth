@@ -84,7 +84,8 @@
   </header>
 
 <br>
-<script>
+
+    <script>
 // Verificar sesión al cargar la página
 document.addEventListener('DOMContentLoaded', function() {
     checkUserSession();
@@ -140,7 +141,7 @@ function showLoggedOutUser() {
     
     console.log('Usuario no logueado');
 }
-</script>
+ </script>
 
 
 <body>
@@ -192,46 +193,147 @@ function showLoggedOutUser() {
 
 
     <script>
-        $(document).ready(function () {
-            //getChapters();
+        //esto se implementó con Chris
+        // $(document).ready(function () {
+        //     //getChapters();
             
-          $.ajax({
-              type: 'GET',
-              url: '../backend/prueba.php?myInfo=getChapters',
-              success: function (data) {
-                 //alert(data)
-                  const apiResult = JSON.parse(data)
-                  const container = document.getElementById('productosContainer');
+        //   $.ajax({
+        //       type: 'GET',
+        //       url: '../backend/prueba.php?myInfo=getChapters',
+        //       success: function (data) {
+        //          //alert(data)
+        //           const apiResult = JSON.parse(data)
+        //           const container = document.getElementById('productosContainer');
 
-                  apiResult.forEach((result, idx) => {
+        //           apiResult.forEach((result, idx) => {
                     
-                    //adaptar a tu codigo
-                      const content = `
-                      <div class="producto" data-id=${result.idCatalogo}>
-                      <img class ="img-Chapter" src=../assets/img/${result.rutaImagen} alt="chapter">
-                        <h3> ${result.nombreProducto} </h3>
-                        <p> $ ${result.precioP}</p>
-                          <p> TALLA ${result.tallaP}</p>
-                          <p class="descripcion"> DESCRIPCION: ${result.descripcionDeProducto}</p>
-                          <button class="btn-megusta" 
-                            data-id="${result.idCatalogo}"
-                            data-name="${result.nombreProducto}"
-                            data-price="${result.precioP}"
-                            data-image="../assets/img/${result.rutaImagen}">
+        //             //adaptar a tu codigo
+        //               const content = `
+        //               <div class="producto" data-id=${result.idCatalogo}>
+        //               <img class ="img-Chapter" src=../assets/img/${result.rutaImagen} alt="chapter">
+        //                 <h3> ${result.nombreProducto} </h3>
+        //                 <p> $ ${result.precioP}</p>
+        //                   <p> TALLA ${result.tallaP}</p>
+        //                   <p class="descripcion"> DESCRIPCION: ${result.descripcionDeProducto}</p>
+        //                   <button class="btn-megusta" 
+        //                     data-id="${result.idCatalogo}"
+        //                     data-name="${result.nombreProducto}"
+        //                     data-price="${result.precioP}"
+        //                     data-image="../assets/img/${result.rutaImagen}">
+        //                 ❤️
+        //             </button>
+        //                   <button onclick="addToCart(${result.idCatalogo}, '${result.nombreProducto}', '${result.precioP}', '../assets/img/${result.rutaImagen}')">
+        //                   🛒 Añadir</button>
+        //               </div>
+        //               `;
+
+        //               container.innerHTML += content;
+        //           })
+        //            initializeFavorites();
+        //       }
+        //   });
+           
+        // });
+        // Función para filtrar categorías
+    // Función para filtrar categorías
+function filtrarCategoria(categoria) {
+    const productos = document.querySelectorAll('.producto');
+    const filterBtns = document.querySelectorAll('.categorias-menu button');
+    
+    // Actualizar botones activos
+    filterBtns.forEach(btn => btn.classList.remove('activo'));
+    event.target.classList.add('activo');
+    
+    // Filtrar productos
+    productos.forEach(producto => {
+        if (categoria === 'todos') {
+            producto.style.display = 'block';
+        } else {
+            // Verificar si el producto tiene la clase de categoría
+            if (producto.classList.contains(categoria)) {
+                producto.style.display = 'block';
+            } else {
+                producto.style.display = 'none';
+            }
+        }
+    });
+}
+
+// Función para convertir categoria_id a nombre de categoría
+function convertirCategoria(categoriaId) {
+    switch(categoriaId) {
+        case '1':
+            return 'mujer';
+        case '2':
+            return 'hombre';
+        case '3':
+            return 'nino';
+        default:
+            return 'hombre'; // Por defecto
+    }
+}
+
+$(document).ready(function () {
+    $.ajax({
+        type: 'GET',
+        url: '../backend/prueba.php?myInfo=getChapters',
+        success: function (data) {
+            const apiResult = JSON.parse(data);
+            const container = document.getElementById('productosContainer');
+
+            apiResult.forEach((result, idx) => {
+                // Convertir categoria_id a nombre de categoría
+                const categoria = convertirCategoria(result.categoriaP);
+                
+                // 🔍 DEBUG: Ver qué categorías se están asignando
+                console.log(`Producto: ${result.nombreProducto}`);
+                console.log(`categoria_id desde BD: ${result.categoriaP}`);
+                console.log(`Categoría convertida: ${categoria}`);
+                console.log('---');
+                
+                // Generar HTML con la clase de categoría
+                const content = `
+                <div class="producto ${categoria}" data-id="${result.idCatalogo}">
+                    <img class="img-Chapter" src="../assets/img/${result.rutaImagen}" alt="chapter">
+                    <h3>${result.nombreProducto}</h3>
+                    <p>$ ${result.precioP}</p>
+                    <p>TALLA ${result.tallaP}</p>
+                    <p class="descripcion">DESCRIPCION: ${result.descripcionDeProducto}</p>
+                    <button class="btn-megusta" 
+                        data-id="${result.idCatalogo}"
+                        data-name="${result.nombreProducto}"
+                        data-price="${result.precioP}"
+                        data-image="../assets/img/${result.rutaImagen}">
                         ❤️
                     </button>
-                          <button onclick="addToCart(${result.idCatalogo}, '${result.nombreProducto}', '${result.precioP}', '../assets/img/${result.rutaImagen}')">
-                          🛒 Añadir</button>
-                      </div>
-                      `;
+                    <button onclick="addToCart(${result.idCatalogo}, '${result.nombreProducto}', '${result.precioP}', '../assets/img/${result.rutaImagen}')">
+                        🛒 Añadir
+                    </button>
+                </div>
+                `;
 
-                      container.innerHTML += content;
-                  })
-                   initializeFavorites();
-              }
-          });
-           
-        });
+                container.innerHTML += content;
+            });
+            
+            initializeFavorites();
+            
+            // Establecer "Todos" como activo por defecto
+            const primerBoton = document.querySelector('.categorias-menu button');
+            if (primerBoton) {
+                primerBoton.classList.add('activo');
+            }
+            
+            // 🔍 DEBUG: Ver todas las clases que se generaron
+            setTimeout(() => {
+                const productos = document.querySelectorAll('.producto');
+                console.log('=== RESUMEN DE PRODUCTOS ===');
+                productos.forEach(producto => {
+                    console.log(`Clases del producto: ${producto.className}`);
+                });
+            }, 1000);
+        }
+    });
+});
 
         function initializeFavorites() {
     const botonesMeGusta = document.querySelectorAll(".producto .btn-megusta");
