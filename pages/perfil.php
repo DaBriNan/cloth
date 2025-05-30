@@ -333,7 +333,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </a>
 
         <!-- Usuario logueado -->
-        <div class="user-menu">
+        <!-- <div class="user-menu">
             <button class="user user-button" onclick="toggleUserDropdown()">
                 <img src="../assets/img/user.png" alt="usuario" class="imagen">
                 <span class="user-name"><?php echo htmlspecialchars($_SESSION["Nom"]); ?></span>
@@ -349,7 +349,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <a href="perfil.php" class="active">
                     <i class="fas fa-user" style="margin-right: 8px;"></i>
                     Mi Perfil
-                </a>
+                </a> -->
                 <!-- <a href="misPedidos.php">
                     <i class="fas fa-shopping-bag" style="margin-right: 8px;"></i>
                     Mis Pedidos
@@ -362,12 +362,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <i class="fas fa-cog" style="margin-right: 8px;"></i>
                     Configuración
                 </a> -->
-                <a href="../backend/logout.php" class="logout-link" onclick="return confirmLogout()">
+                <!-- <a href="../backend/logout.php" class="logout-link" onclick="return confirmLogout()">
                     <i class="fas fa-sign-out-alt logout-icon" style="margin-right: 8px;"></i>
                     Cerrar Sesión
                 </a>
             </div>
+        </div> -->
+        <div class="user-logged-section">
+        <!-- Información del usuario (avatar + nombre) -->
+        <div class="user-info">
+            <img src="../assets/img/user.png" alt="usuario" class="user-avatar">
+            <span class="user-name-display"><?php echo htmlspecialchars($_SESSION["Nom"]); ?></span>
         </div>
+        
+        <!-- Botones de acción -->
+        <div class="user-actions">
+            <a href="perfil.php" class="action-btn profile-btn" title="Ver perfil">
+                <i class="fas fa-user"></i>
+                <span>Perfil</span>
+            </a>
+            
+            <a href="#" class="action-btn logout-btn" title="Cerrar sesión"
+               onclick="if(confirm('¿Cerrar sesión?')) { window.location.href='../backend/logout.php'; } return false;">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Salir</span>
+            </a>
+        </div>
+    </div>
     </header>
 
     <div class="profile-container">
@@ -578,26 +599,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </footer>
 
-    <script>
-        // JavaScript para dropdown del usuario
-        function toggleUserDropdown() {
-            const dropdown = document.getElementById('user-dropdown');
-            dropdown.classList.toggle('show');
-        }
-
-        function confirmLogout() {
-            return confirm('¿Estás seguro que deseas cerrar sesión?');
-        }
-
-        // Cerrar dropdown al hacer clic fuera
-        document.addEventListener('click', function(event) {
-            const userMenu = document.querySelector('.user-menu');
-            const dropdown = document.getElementById('user-dropdown');
-            
-            if (!userMenu.contains(event.target)) {
-                dropdown.classList.remove('show');
-            }
-        });
-    </script>
+  <script>
+function confirmLogout() {
+    return confirm('¿Estás seguro que deseas cerrar sesión?');
+}
+</script>
 </body>
 </html>

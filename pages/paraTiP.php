@@ -46,10 +46,8 @@
          <a href="../pages/meGusta.php" class="meGusta">
             <img src="../assets/img/Heart.png" alt="meGusta" class="imagen">
         </a>
-        <!-- <div class="meGusta">
-            <img src="../assets/img/Heart.png" alt="meGusta" class="imagen" />
-        </div> -->
-        <a href="../pages/logIn.php" class="user">
+        
+        <!-- <a href="../pages/logIn.php" class="user">
             <img src="../assets/img/user.png" alt="login" class="imagen">
         </a>
          <?php
@@ -57,7 +55,93 @@
         if(isset($_SESSION["Id"])){
             echo $_SESSION["Nom"];
         }
-     ?>
+     ?> -->
+     <a href="../pages/logIn.php" class="user" id="login-btn">
+        <img src="../assets/img/user.png" alt="login" class="imagen">
+    </a>
+
+    <!-- Sección de usuario logueado (oculta por defecto) -->
+    <div class="user-logged-section" id="user-logged-section" style="display: none;">
+        <!-- Información del usuario (avatar + nombre) -->
+        <div class="user-info">
+            <img src="../assets/img/user.png" alt="usuario" class="user-avatar">
+            <span class="user-name-display" id="user-name-display">Usuario</span>
+        </div>
+        
+        <!-- Botones de acción -->
+        <div class="user-actions">
+            <a href="../pages/perfil.php" class="action-btn profile-btn" title="Ver perfil">
+                <i class="fas fa-user"></i>
+                <span>Perfil</span>
+            </a>
+            
+            <a href="#" class="action-btn logout-btn" title="Cerrar sesión"
+               onclick="if(confirm('¿Cerrar sesión?')) { window.location.href='../backend/logout.php'; } return false;">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Salir</span>
+            </a>
+        </div>
+    </div>
+
+    <script>
+// Verificar sesión al cargar la página
+document.addEventListener('DOMContentLoaded', function() {
+    checkUserSession();
+});
+
+// Verificar si hay una sesión activa
+function checkUserSession() {
+    fetch('../backend/check_session.php') // ← Nota la ruta con ../
+        .then(response => response.json())
+        .then(data => {
+            console.log('Session data:', data);
+            
+            if (data.loggedIn && data.user) {
+                showLoggedInUser(data.user);
+            } else {
+                showLoggedOutUser();
+            }
+        })
+        .catch(error => {
+            console.log('Error verificando sesión:', error);
+            showLoggedOutUser();
+        });
+}
+
+// Mostrar usuario logueado
+function showLoggedInUser(user) {
+    const loginBtn = document.getElementById('login-btn');
+    const userSection = document.getElementById('user-logged-section');
+    const userNameDisplay = document.getElementById('user-name-display');
+    
+    // Ocultar botón de login
+    if (loginBtn) loginBtn.style.display = 'none';
+    
+    // Mostrar sección de usuario logueado
+    if (userSection) userSection.style.display = 'flex';
+    
+    // Mostrar nombre del usuario
+    if (userNameDisplay) userNameDisplay.textContent = user.name || 'Usuario';
+    
+    console.log('Usuario logueado:', user.name);
+}
+
+// Mostrar usuario NO logueado
+function showLoggedOutUser() {
+    const loginBtn = document.getElementById('login-btn');
+    const userSection = document.getElementById('user-logged-section');
+    
+    // Mostrar botón de login
+    if (loginBtn) loginBtn.style.display = 'inline-flex';
+    
+    // Ocultar sección de usuario logueado
+    if (userSection) userSection.style.display = 'none';
+    
+    console.log('Usuario no logueado');
+}
+</script>
+
+     
     </header>
 
     <div class="cart-icon" id="cartIcon">
@@ -84,13 +168,13 @@
     <!-- barra-horizontal -->
 
 
-    <nav class="categorias-menu">
+    <!-- <nav class="categorias-menu">
         <button onclick="filtrarCategoria('Todo')">Todo</button>
         <button onclick="filtrarCategoria('Chamarras')">Chamarras</button>
         <button onclick="filtrarCategoria('Camisas')">Camisas</button>
         <button onclick="filtrarCategoria('Calzado')">Calzado</button>
         <button onclick="filtrarCategoria('Accesorios')">Accesorios</button>
-      </nav>
+      </nav> -->
  
             <main id="productosContainer" class="productos-grid">
     
@@ -102,7 +186,7 @@
                   <p>$230 MXN</p>
                   <p>Talla: M</p>
                   <button class="btn-megusta" data-id="1" data-name="Playera Amiri" data-price="230" data-image="/assets/img/amiri camisa.webp">❤️</button>
-                  <button onclick="addToCart(1,'Playera Amiri', 230, '/assets/img/amiri camisa.webp')">Comprar</button>
+                  <!-- <button onclick="addToCart(1,'Playera Amiri', 230, '/assets/img/amiri camisa.webp')">Comprar</button> -->
                 </div>
             
                 
@@ -114,7 +198,7 @@
                   <p>$350 MXN</p>
                   <p>Talla: S</p>
                   <button class="btn-megusta" data-id="2" data-name="Playera Estampada" data-price="350" data-image="/assets/img/saint.webp">❤️</button>
-                  <button onclick="addToCart(2,'Playera Estampada', 350, '/assets/img/saint.webp')">Comprar</button>
+                  <!-- <button onclick="addToCart(2,'Playera Estampada', 350, '/assets/img/saint.webp')">Comprar</button> -->
                 </div>
             
                 
@@ -126,7 +210,7 @@
                   <p>$590 MXN</p>
                   <p>Talla: M</p>
                   <button class="btn-megusta" data-id="3" data-name="Chamarra DSQUARED" data-price="590" data-image="/assets/img/mezclilla squared.webp">❤️</button>
-                  <button onclick="addToCart(3,'Chamarra DSQUARED', 590, '/assets/img/mezclilla squared.webp')">Comprar</button>
+                  <!-- <button onclick="addToCart(3,'Chamarra DSQUARED', 590, '/assets/img/mezclilla squared.webp')">Comprar</button> -->
                 </div>
             
                 
@@ -138,7 +222,7 @@
                   <p>$450 MXN</p>
                   <p>Talla: L</p>
                   <button class="btn-megusta" data-id="4" data-name="Sandro" data-price="450" data-image="/assets/img/sandro.webp">❤️</button>
-                  <button onclick="addToCart(4,'Sandro', 450, '/assets/img/sandro.webp')">Comprar</button>
+                  <!-- <button onclick="addToCart(4,'Sandro', 450, '/assets/img/sandro.webp')">Comprar</button> -->
                 </div>
             
                 
@@ -150,7 +234,7 @@
                   <p>$100 MXN</p>
                   <p>Talla: S</p>
                   <button class="btn-megusta" data-id="5" data-name="Playera CDG" data-price="100" data-image="/assets/img/playera cdg.webp">❤️</button>
-                  <button onclick="addToCart(5,'Playera CDG', 100, '/assets/img/playera cdg.webp')">Comprar</button>
+                  <!-- <button onclick="addToCart(5,'Playera CDG', 100, '/assets/img/playera cdg.webp')">Comprar</button> -->
                 </div>
             
                 
@@ -162,7 +246,7 @@
                   <p>$325 MXN</p>
                   <p>Talla: S</p>
                   <button class="btn-megusta" data-id="6" data-name="Playera Casa Blanca" data-price="325" data-image="/assets/img/playera casa blanca.webp">❤️</button>
-                  <button onclick="addToCart(6,'Playera Casa Blanca', 325, '/assets/img/playera casa blanca.webp')">Comprar</button>
+                  <!-- <button onclick="addToCart(6,'Playera Casa Blanca', 325, '/assets/img/playera casa blanca.webp')">Comprar</button> -->
                 </div>
             
                 
@@ -174,7 +258,7 @@
                   <p>$500 MXN</p>
                   <p>Talla: M</p>
                   <button class="btn-megusta" data-id="7" data-name="All Saints" data-price="50" data-image="/assets/img/sueter all saints.webp">❤️</button>
-                  <button onclick="addToCart(7,'All Saints', 50, '/assets/img/sueter all saints.webp')">Comprar</button>
+                  <!-- <button onclick="addToCart(7,'All Saints', 50, '/assets/img/sueter all saints.webp')">Comprar</button> -->
                 </div>
             
                 
@@ -186,7 +270,7 @@
                   <p>$299 MXN</p>
                   <p>Talla: L</p>
                   <button class="btn-megusta" data-id="8" data-name="Playera Palm" data-price="25" data-image="/assets/img/playera palm.webp">❤️</button>
-                  <button onclick="addToCart(8,'Playera Palm', 25, '/assets/img/playera palm.webp')">Comprar</button>
+                  <!-- <button onclick="addToCart(8,'Playera Palm', 25, '/assets/img/playera palm.webp')">Comprar</button> -->
                 </div>
             
                 
@@ -198,7 +282,7 @@
                   <p>$600 MXN</p>
                   <p>Talla: 32</p>
                   <button class="btn-megusta" data-id="9" data-name="Denim" data-price="100" data-image="/assets/img/denim.webp">❤️</button>
-                  <button onclick="addToCart(9,'Denim', 100, '/assets/img/denim.webp')">Comprar</button>
+                  <!-- <button onclick="addToCart(9,'Denim', 100, '/assets/img/denim.webp')">Comprar</button> -->
                 </div>
             
                 
@@ -210,7 +294,7 @@
                   <p>$750 MXN</p>
                   <p>Talla: S</p>
                   <button class="btn-megusta" data-id="10" data-name="Camisa" data-price="750" data-image="/assets/img/Legacy Camisa.webp">❤️</button>
-                  <button onclick="addToCart(10,'CamisaLegacy', 750, '/assets/img/Legacy Camisa.webp')">Comprar</button>
+                  <!-- <button onclick="addToCart(10,'CamisaLegacy', 750, '/assets/img/Legacy Camisa.webp')">Comprar</button> -->
                 </div>
             
                 <div class="product-list" id="productos-container">

@@ -32,7 +32,7 @@
     <a href="../pages/meGusta.php" class="meGusta">
       <img src="../assets/img/Heart.png" alt="meGusta" class="imagen">
     </a>
-    <a href="../pages/logIn.php" class="user">
+    <!-- <a href="../pages/logIn.php" class="user">
       <img src="../assets/img/user.png" alt="login" class="imagen">
     </a>
      <?php
@@ -40,8 +40,94 @@
         if(isset($_SESSION["Id"])){
             echo $_SESSION["Nom"];
         }
-     ?>
+     ?> -->
+
+
+<a href="../pages/logIn.php" class="user" id="login-btn">
+        <img src="../assets/img/user.png" alt="login" class="imagen">
+    </a>
+
+    <!-- Sección de usuario logueado (oculta por defecto) -->
+    <div class="user-logged-section" id="user-logged-section" style="display: none;">
+        <!-- Información del usuario (avatar + nombre) -->
+        <div class="user-info">
+            <img src="../assets/img/user.png" alt="usuario" class="user-avatar">
+            <span class="user-name-display" id="user-name-display">Usuario</span>
+        </div>
+        
+        <!-- Botones de acción -->
+        <div class="user-actions">
+            <a href="../pages/perfil.php" class="action-btn profile-btn" title="Ver perfil">
+                <i class="fas fa-user"></i>
+                <span>Perfil</span>
+            </a>
+            
+            <a href="#" class="action-btn logout-btn" title="Cerrar sesión"
+               onclick="if(confirm('¿Cerrar sesión?')) { window.location.href='../backend/logout.php'; } return false;">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Salir</span>
+            </a>
+        </div>
+    </div>
+
   </header>
+  <script>
+// Verificar sesión al cargar la página
+document.addEventListener('DOMContentLoaded', function() {
+    checkUserSession();
+});
+
+// Verificar si hay una sesión activa
+function checkUserSession() {
+    fetch('../backend/check_session.php') // ← Nota la ruta con ../
+        .then(response => response.json())
+        .then(data => {
+            console.log('Session data:', data);
+            
+            if (data.loggedIn && data.user) {
+                showLoggedInUser(data.user);
+            } else {
+                showLoggedOutUser();
+            }
+        })
+        .catch(error => {
+            console.log('Error verificando sesión:', error);
+            showLoggedOutUser();
+        });
+}
+
+// Mostrar usuario logueado
+function showLoggedInUser(user) {
+    const loginBtn = document.getElementById('login-btn');
+    const userSection = document.getElementById('user-logged-section');
+    const userNameDisplay = document.getElementById('user-name-display');
+    
+    // Ocultar botón de login
+    if (loginBtn) loginBtn.style.display = 'none';
+    
+    // Mostrar sección de usuario logueado
+    if (userSection) userSection.style.display = 'flex';
+    
+    // Mostrar nombre del usuario
+    if (userNameDisplay) userNameDisplay.textContent = user.name || 'Usuario';
+    
+    console.log('Usuario logueado:', user.name);
+}
+
+// Mostrar usuario NO logueado
+function showLoggedOutUser() {
+    const loginBtn = document.getElementById('login-btn');
+    const userSection = document.getElementById('user-logged-section');
+    
+    // Mostrar botón de login
+    if (loginBtn) loginBtn.style.display = 'inline-flex';
+    
+    // Ocultar sección de usuario logueado
+    if (userSection) userSection.style.display = 'none';
+    
+    console.log('Usuario no logueado');
+}
+</script>
 
   <div class="favoritos-container">
     <h2>Mis productos favoritos ❤️</h2>

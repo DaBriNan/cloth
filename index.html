@@ -1,6 +1,6 @@
-<?php
+<!-- <?php
 session_start();
-?>
+?> -->
 
 <!DOCTYPE html>
 <html lang="es">
@@ -64,54 +64,36 @@ session_start();
 
         <!-- <a href="pages/logIn.php" class="user">
             <img src="assets/img/user.png" alt="login" class="imagen">
-        </a>
-         -->
+        </a> -->
+        <!-- Reemplaza la parte del usuario en tu header por esto: -->
 
+<!-- Botón de login (visible cuando NO hay sesión) -->
+<a href="pages/logIn.php" class="user" id="login-btn">
+    <img src="assets/img/user.png" alt="login" class="imagen">
+</a>
 
-         <!-- logout inicia -->
-           <div class="user-container">
-        <!-- Botón de login (visible por defecto) -->
-        <a href="pages/logIn.php" class="user" id="login-btn">
-            <img src="assets/img/user.png" alt="login" class="imagen">
+<!-- Sección de usuario logueado (oculta por defecto) -->
+<div class="user-logged-section" id="user-logged-section" style="display: none;">
+    <!-- Nombre del usuario -->
+    <div class="user-info">
+        <img src="assets/img/user.png" alt="usuario" class="user-avatar">
+        <span class="user-name-display" id="user-name-display">Usuario</span>
+    </div>
+    
+    <!-- Botones de acción -->
+    <div class="user-actions">
+        <a href="pages/perfil.php" class="action-btn profile-btn" title="Ver perfil">
+            <i class="fas fa-user"></i>
+            <span>Perfil</span>
         </a>
         
-        <!-- Menú de usuario logueado (oculto por defecto) -->
-        <div class="user-menu" id="user-menu" style="display: none;">
-            <button class="user user-button" onclick="toggleUserDropdown()">
-                <img src="assets/img/user.png" alt="usuario" class="imagen">
-                <span class="user-name" id="user-name-display">Usuario</span>
-                <i class="fas fa-chevron-down"></i>
-            </button>
-            
-            <div class="user-dropdown" id="user-dropdown">
-                <div class="user-info">
-                    <h4 id="user-full-name">Usuario</h4>
-                    <p>Bienvenid@ de vuelta</p>
-                </div>
-                
-                <a href="pages/perfil.php">
-                    <i class="fas fa-user" style="margin-right: 8px;"></i>
-                    Mi Perfil
-                </a>
-                <!-- <a href="pages/misPedidos.php">
-                    <i class="fas fa-shopping-bag" style="margin-right: 8px;"></i>
-                    Mis Pedidos
-                </a> -->
-                <!-- <a href="pages/direcciones.php">
-                    <i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i>
-                    Mis Direcciones -->
-                <!-- </a>
-                <a href="pages/configuracion.php">
-                    <i class="fas fa-cog" style="margin-right: 8px;"></i>
-                    Configuración
-                </a> -->
-                <a href="backend/logout.php" class="logout-link" onclick="return confirmLogout()">
-                    <i class="fas fa-sign-out-alt logout-icon" style="margin-right: 8px;"></i>
-                    Cerrar Sesión
-                </a>
-            </div>
-        </div>
+        <a href="#" class="action-btn logout-btn" title="Cerrar sesión"
+           onclick="if(confirm('¿Cerrar sesión?')) { window.location.href='backend/logout.php'; } return false;">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Salir</span>
+        </a>
     </div>
+</div>
 
     </header>
 
@@ -165,7 +147,7 @@ session_start();
                     <p>$399 MXN</p>
                     <div class="botones-producto">
                         <button class="btn-megusta">❤️</button>
-                        <button onclick="addToCart(1,'Bufanda gris', 230, '/assets/img/bufanda.png')"class="btn-carrito">🛒 Añadir</button>
+                        <!-- <button onclick="addToCart(1,'Bufanda gris', 230, '/assets/img/bufanda.png')"class="btn-carrito">🛒 Añadir</button> -->
                     </div>
                 </div>
 
@@ -176,7 +158,7 @@ session_start();
                     <p>$499 MXN</p>
                     <div class="botones-producto">
                         <button class="btn-megusta">❤️</button>
-                        <button onclick="addToCart(11,'Jersey Real Madrid', 499, '/assets/img/realm.png')" class="btn-carrito">🛒 Añadir</button>
+                        <!-- <button onclick="addToCart(11,'Jersey Real Madrid', 499, '/assets/img/realm.png')" class="btn-carrito">🛒 Añadir</button> -->
                     </div>
                 </div>
 
@@ -187,7 +169,7 @@ session_start();
                     <p>$349 MXN</p>
                     <div class="botones-producto">
                         <button class="btn-megusta">❤️</button>
-                        <button onclick="addToCart(12,'Polo azul', 349, '/assets/img/polo azul.webp')"class="btn-carrito">🛒 Añadir</button>
+                        <!-- <button onclick="addToCart(12,'Polo azul', 349, '/assets/img/polo azul.webp')"class="btn-carrito">🛒 Añadir</button> -->
                     </div>
                 </div>
 
@@ -198,7 +180,7 @@ session_start();
                     <p>$279 MXN</p>
                     <div class="botones-producto">
                         <button class="btn-megusta">❤️</button>
-                        <button onclick="addToCart(13,'Playera Under Armour', 279, '/assets/img/underc.png')" class="btn-carrito">🛒 Añadir</button>
+                        <!-- <button onclick="addToCart(13,'Playera Under Armour', 279, '/assets/img/underc.png')" class="btn-carrito">🛒 Añadir</button> -->
                     </div>
                 </div>
 
@@ -209,7 +191,7 @@ session_start();
                     <p>$699 MXN</p>
                     <div class="botones-producto">
                         <button class="btn-megusta">❤️</button>
-                        <button onclick="addToCart(14,'Jeans Clasicos', 699, '/assets/img/jeansh.png')" class="btn-carrito">🛒 Añadir</button>
+                        <!-- <button onclick="addToCart(14,'Jeans Clasicos', 699, '/assets/img/jeansh.png')" class="btn-carrito">🛒 Añadir</button> -->
                     </div>
                 </div>
 
@@ -220,7 +202,7 @@ session_start();
                     <p>$559 MXN</p>
                     <div class="botones-producto">
                         <button class="btn-megusta">❤️</button>
-                        <button onclick="addToCart(15,'Hoddie blanca', 559, '/assets/img/nike1.webp')"class="btn-carrito">🛒 Añadir</button>
+                        <!-- <button onclick="addToCart(15,'Hoddie blanca', 559, '/assets/img/nike1.webp')"class="btn-carrito">🛒 Añadir</button> -->
                     </div>
                 </div>
 
@@ -433,111 +415,62 @@ session_start();
 
 <!-- logout -->
 <script>
-// Variables globales
-let isLoggedIn = false;
-let currentUser = null;
-
 // Verificar sesión al cargar la página
 document.addEventListener('DOMContentLoaded', function() {
     checkUserSession();
-    setupDropdownClickOutside();
 });
 
 // Verificar si hay una sesión activa
 function checkUserSession() {
-    // Hacer una petición AJAX para verificar la sesión PHP
     fetch('backend/check_session.php')
         .then(response => response.json())
         .then(data => {
-            if (data.loggedIn) {
-                showLoggedInState(data.user);
+            console.log('Session data:', data);
+            
+            if (data.loggedIn && data.user) {
+                showLoggedInUser(data.user);
             } else {
-                showLoggedOutState();
+                showLoggedOutUser();
             }
         })
         .catch(error => {
             console.log('Error verificando sesión:', error);
-            showLoggedOutState();
+            showLoggedOutUser();
         });
 }
 
-// Mostrar estado cuando el usuario está logueado
-function showLoggedInState(user) {
-    isLoggedIn = true;
-    currentUser = user;
+// Mostrar usuario logueado
+function showLoggedInUser(user) {
+    const loginBtn = document.getElementById('login-btn');
+    const userSection = document.getElementById('user-logged-section');
+    const userNameDisplay = document.getElementById('user-name-display');
     
-    document.getElementById('login-btn').style.display = 'none';
-    document.getElementById('user-menu').style.display = 'inline-block';
-    document.getElementById('user-name-display').textContent = user.name || 'Usuario';
-    document.getElementById('user-full-name').textContent = user.name || 'Usuario';
-}
-
-// Mostrar estado cuando el usuario NO está logueado
-function showLoggedOutState() {
-    isLoggedIn = false;
-    currentUser = null;
+    // Ocultar botón de login
+    if (loginBtn) loginBtn.style.display = 'none';
     
-    document.getElementById('login-btn').style.display = 'flex';
-    document.getElementById('user-menu').style.display = 'none';
-}
-
-// Toggle del dropdown del usuario
-function toggleUserDropdown() {
-    const dropdown = document.getElementById('user-dropdown');
-    const userMenu = document.getElementById('user-menu');
-    const overlay = getOrCreateOverlay();
+    // Mostrar sección de usuario logueado
+    if (userSection) userSection.style.display = 'flex';
     
-    if (dropdown.classList.contains('show')) {
-        dropdown.classList.remove('show');
-        userMenu.classList.remove('active');
-        overlay.classList.remove('active');
-    } else {
-        dropdown.classList.add('show');
-        userMenu.classList.add('active');
-        overlay.classList.add('active');
-    }
+    // Mostrar nombre del usuario
+    if (userNameDisplay) userNameDisplay.textContent = user.name || 'Usuario';
+    
+    console.log('Usuario logueado:', user.name);
 }
 
-// Cerrar dropdown al hacer clic fuera
-function setupDropdownClickOutside() {
-    document.addEventListener('click', function(event) {
-        const userMenu = document.getElementById('user-menu');
-        const dropdown = document.getElementById('user-dropdown');
-        const overlay = document.getElementById('dropdown-overlay');
-        
-        if (userMenu && !userMenu.contains(event.target)) {
-            if (dropdown) dropdown.classList.remove('show');
-            if (userMenu) userMenu.classList.remove('active');
-            if (overlay) overlay.classList.remove('active');
-        }
-    });
-}
-
-// Crear overlay si no existe
-function getOrCreateOverlay() {
-    let overlay = document.getElementById('dropdown-overlay');
-    if (!overlay) {
-        overlay = document.createElement('div');
-        overlay.id = 'dropdown-overlay';
-        overlay.className = 'dropdown-overlay';
-        overlay.addEventListener('click', function() {
-            const dropdown = document.getElementById('user-dropdown');
-            const userMenu = document.getElementById('user-menu');
-            if (dropdown) dropdown.classList.remove('show');
-            if (userMenu) userMenu.classList.remove('active');
-            overlay.classList.remove('active');
-        });
-        document.body.appendChild(overlay);
-    }
-    return overlay;
-}
-
-// Confirmar logout
-function confirmLogout() {
-    return confirm('¿Estás seguro que deseas cerrar sesión?');
+// Mostrar usuario NO logueado
+function showLoggedOutUser() {
+    const loginBtn = document.getElementById('login-btn');
+    const userSection = document.getElementById('user-logged-section');
+    
+    // Mostrar botón de login
+    if (loginBtn) loginBtn.style.display = 'inline-flex';
+    
+    // Ocultar sección de usuario logueado
+    if (userSection) userSection.style.display = 'none';
+    
+    console.log('Usuario no logueado');
 }
 </script>
-
 
 
 </body>
