@@ -177,48 +177,65 @@ function showLoggedOutUser() {
   </footer>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const contenedor = document.getElementById("listaFavoritos");
-      let favoritos = JSON.parse(localStorage.getItem("meGusta")) || [];
+    // Reemplaza el script que genera los favoritos por este:
 
-      if (favoritos.length === 0) {
-        contenedor.innerHTML = '<div class="empty-favorites">No has marcado ningún producto como favorito.</div>';
-        return;
-      }
+document.addEventListener("DOMContentLoaded", function() {
+  const contenedor = document.getElementById("listaFavoritos");
+  let favoritos = JSON.parse(localStorage.getItem("meGusta")) || [];
 
-      contenedor.innerHTML = favoritos.map(producto => `
-        <div class="producto" data-id="${producto.id}">
-          <img src="${producto.image}" alt="${producto.name}">
-          <div class="producto-info">
-            <h3>${producto.name}</h3>
-            <p>$${producto.price} MXN</p>
-          </div>
-          <div class="producto-actions">
-            <button class="btn-megusta" data-id="${producto.id}">❤️</button>
+  if (favoritos.length === 0) {
+    contenedor.innerHTML = `
+      <div class="empty-favorites">
+        <h2>No tienes favoritos aún</h2>
+        <p>¡Explora nuestros productos y marca tus favoritos!</p>
+        <a href="../pages/produPrueba.php" class="btn-explorar">Explorar Productos</a>
+      </div>
+    `;
+    return;
+  }
 
-          
+  // Generar HTML con las clases correctas para el CSS
+  contenedor.innerHTML = favoritos.map(producto => `
+    <div class="producto-favorito" data-id="${producto.id}">
+      <div class="image-container">
+        <img src="${producto.image}" alt="${producto.name}">
+      </div>
+      <div class="info-favorito">
+        <h3>${producto.name}</h3>
+        <p class="precio-favorito">$${producto.price} MXN</p>
+      </div>
+      <button class="btn-eliminar" data-id="${producto.id}" title="Eliminar de favoritos">×</button>
+      <div class="acciones-favorito">
+       
+      </div>
+    </div>
+  `).join("");
 
-            
-          </div>
-        </div>
-      `).join("");
-
-      // Manejar eliminación de favoritos
-      document.querySelectorAll(".btn-megusta").forEach(btn => {
-        btn.addEventListener("click", function() {
-          const productId = this.getAttribute('data-id');
-          favoritos = favoritos.filter(p => p.id !== productId);
-          localStorage.setItem("meGusta", JSON.stringify(favoritos));
-          location.reload();
-        });
-      });
+  // Manejar eliminación de favoritos
+  document.querySelectorAll(".btn-eliminar").forEach(btn => {
+    btn.addEventListener("click", function() {
+      const productId = this.getAttribute('data-id');
+      favoritos = favoritos.filter(p => p.id !== productId);
+      localStorage.setItem("meGusta", JSON.stringify(favoritos));
+      
+      // Animación suave al eliminar
+      const productoDiv = this.closest('.producto-favorito');
+      productoDiv.style.animation = 'slideOutUp 0.4s ease-in forwards';
+      
+      setTimeout(() => {
+        location.reload();
+      }, 400);
     });
+  });
+});
 
-    // Función simulada para añadir al carrito
-    //window.addToCart = function(id, name, price, image) {
-      //alert(`Producto ${name} añadido al carrito`);
-      // Aquí iría la lógica real para añadir al carrito
-    //};
+// Función para añadir al carrito (si no existe)
+if (typeof addToCart === 'undefined') {
+  window.addToCart = function(id, name, price, image) {
+    alert(`Producto ${name} añadido al carrito`);
+    // Aquí iría la lógica real para añadir al carrito
+  };
+}
   </script>
 
   <div id="ai-chat-container">
