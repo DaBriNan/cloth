@@ -71,6 +71,7 @@
     </div>
 
   </header>
+
   <script>
 // Verificar sesión al cargar la página
 document.addEventListener('DOMContentLoaded', function() {
@@ -195,8 +196,7 @@ function showLoggedOutUser() {
           <div class="producto-actions">
             <button class="btn-megusta" data-id="${producto.id}">❤️</button>
 
-            <button class="btn-comprar" onclick="addToCart('${producto.id}', 
-            '${producto.name}', ${producto.price}, '${producto.image}', '${producto.description}')">Comprar</button>
+          
 
             
           </div>
