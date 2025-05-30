@@ -1,304 +1,543 @@
-*{
+/* ========== CSS MODERNO PARA LOGIN/REGISTRO - CLOTHEASY ========== */
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
+    font-family: 'Outfit', sans-serif;
 }
 
+body {
+    background: linear-gradient(90deg, rgba(111, 191, 209, 1) 9%, rgba(202, 235, 202, 1) 50%, rgba(145, 113, 168, 1) 97%);
+    min-height: 100vh;
+    font-family: 'Outfit', sans-serif;
+}
 
-
+/* ========== HEADER STYLES ========== */
 .imgMenu {
-    height: 150px !important;
+    height: 110px !important;
     width: auto !important;
+    transition: all 0.5s ease;
+    filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.4));
+    animation: rotateYWithPause 10s infinite;
+    transform-style: preserve-3d;
 }
-.logo-container img {
-    height: 90px; 
-    width: auto;
-    max-height: 100%; 
+
+@keyframes rotateYWithPause {
+  0% { transform: rotateY(0deg); }
+  71.4% { transform: rotateY(360deg); }
+  100% { transform: rotateY(360deg); }
+}
+
+.imgMenu:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.5));
+    animation-play-state: paused;
 }
 
 .barra-menu {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     width: 100%;
-    background-color: rgba(153, 45, 45, 0.0);
-    padding: 5px 10px;
-    gap: 50px;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 15px 25px;
+    gap: 20px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    min-height: 130px;
+    flex-wrap: wrap;
 }
 
-.Titulo {
-    font-family: 'Outfit', sans-serif;
-    font-size: 45px;
-    font-style: normal;
-    font-weight: 800;
-    line-height: normal;
-    text-transform: uppercase;
+.barra-menu:hover {
+    backdrop-filter: blur(8px);
+    background-color: rgba(255, 255, 255, 0.15);
 }
 
-.black {
-    color: black;
-}
-
-.blue {
-    background: linear-gradient(105deg, #8781FF 12.17%, #6A65C8 38.22%, #514D99 49.17%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.barra {
-    padding-top: 5px;
-}
-
-.search-bar input {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.search-bar button {
-    padding: 5px 10px;
-    border: none;
-    background-color: #2731a3;
-    color: white;
-    border-radius: 5px;
+/* Botones de navegación */
+.vender, .comprar, .paraTi {
+    display: inline-block;
+    border-radius: 20px;
+    padding: 10px 24px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
     cursor: pointer;
-}
-
-.search-bar button:hover {
-    background-color: #4f59c9;
+    border: 2px solid transparent;
+    text-decoration: none;
+    min-width: 100px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .vender {
-    display: inline-block;
-    
-    border-radius: 25px;
-    background-color: #6A65C6;
-    padding: 2px 10px;
-    padding-left: 3%;
+    background-color: #9171A8;
+}
+
+.vender::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #7c5d94, #b088c8);
+    transition: left 0.4s ease;
+    z-index: 1;
+}
+
+.vender:hover::before {
+    left: 0;
+}
+
+.vender:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(145, 113, 168, 0.5);
 }
 
 .vender .texto {
-    color: #FFF;
-    font-family: Outfit;
-    font-size: 26px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
+    position: relative;
+    z-index: 2;
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    transition: all 0.3s ease;
 }
 
 .comprar {
-    display: inline-block;
-    /* Para que el fondo se ajuste al contenido */
-    border-radius: 25px;
     background-color: #008CCA;
-    padding: 2px 10px;
-    /* Aumentar padding para agrandar el fondo */
+}
+
+.comprar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #0077b3, #00a8e6);
+    transition: left 0.4s ease;
+    z-index: 1;
+}
+
+.comprar:hover::before {
+    left: 0;
+}
+
+.comprar:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 140, 202, 0.5);
 }
 
 .comprar .textoc {
-    color: #FFF;
-    font-family: Outfit;
-    font-size: 26px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
+    position: relative;
+    z-index: 2;
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    transition: all 0.3s ease;
 }
 
 .paraTi {
-    display: inline-block;
-    /* Para que el fondo se ajuste al contenido */
-    border-radius: 25px;
-    background-color: #3F5A05;
-    padding: 2px 10px;
-    /* Aumentar padding para agrandar el fondo */
+    background-color: #CAEBCA;
+}
+
+.paraTi::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #b5e0b5, #d8f0d8);
+    transition: left 0.4s ease;
+    z-index: 1;
+}
+
+.paraTi:hover::before {
+    left: 0;
+}
+
+.paraTi:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(202, 235, 202, 0.6);
 }
 
 .paraTi .textop {
-    color: #FFF;
-    font-family: Outfit;
-    font-size: 26px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-}
-
-/*lista debajo de la barra de menu*/
-
-.lista-horizontal {
-    list-style: none;
-    display: flex;
-    padding: 0;
-    gap: 12%;
-    justify-content: center;
-    background-color: rgba(153, 45, 45, 0.021);
-
-}
-
-.lista-horizontal li {
-    color: #FFF;
-
-    font-family: Outfit;
-    font-size: 25px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-
-}
-
-.banner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px;
-    border-radius: 10px;
     position: relative;
-    gap: 5px; 
+    z-index: 2;
+    font-size: 20px;
+    font-weight: 600;
+    color: #2d5a2d;
+    transition: all 0.3s ease;
 }
 
-.texto{
-    flex: 1;
-    max-width: 75%;
-    margin-top: -10%;
-    margin-bottom: -15%;
-    margin-left: -20%;
-    
-}
-
-.texto h1 {
-    font-size: 8em;
-    font-family: 'Outfit', sans-serif;
-    color: #333;
-    
-}
-
-.azul {
-    background: linear-gradient(105deg, #8781FF 12.17%, #6A65C8 38.22%, #514D99 49.17%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.boton {
-    background: #ff792f;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1.6em;
-    margin-top: 15%;
-    margin-left: 15%;
-}
-
-.modelo {
-    max-width: 750px; /* Ajusta el tamaño de la imagen */
-    height: auto;
-}
-
-.carrito {
-    position: absolute;
-    top: 10px;
-    right: 30px;
-    background: white;
-    padding: 10px;
+/* Iconos del header */
+.meGusta, .user {
+    transition: all 0.3s ease;
     border-radius: 50%;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    font-size: 1.5em;
+    padding: 10px;
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 55px;
+    height: 55px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
-a{
-    text-decoration: none;
+
+.meGusta::before, .user::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transition: all 0.4s ease;
+    transform: translate(-50%, -50%);
+    z-index: 1;
 }
-.imgMenu{
-    left: 50px;
-    display: block;
-    height: 50px
-}
 
-
-
-
-
-
-
-
-.modal {
-    display: none; 
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
+.meGusta:hover::before, .user:hover::before {
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+}
+
+.meGusta:hover, .user:hover {
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.meGusta .imagen-corazon, .user .imagen {
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+.meGusta:hover .imagen-corazon, .user:hover .imagen {
+    filter: brightness(1.3) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+    transform: scale(1.1);
+}
+
+/* ========== MODAL STYLES - DISEÑO MODERNO ========== */
+
+/* Overlay del modal */
+.modal, .registerSection {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: rgba(0, 0, 0, 0.6) !important;
+    backdrop-filter: blur(8px) !important;
+    display: none !important;
+    justify-content: center !important;
+    align-items: center !important;
+    z-index: 10000 !important;
+    animation: fadeInModal 0.3s ease;
+}
+
+.modal.show, .registerSection.show {
+    display: flex !important;
+}
+
+@keyframes fadeInModal {
+    from { 
+        opacity: 0;
+        backdrop-filter: blur(0px);
+    }
+    to { 
+        opacity: 1;
+        backdrop-filter: blur(8px);
+    }
 }
 
 /* Contenedor del formulario */
-.modal-contenido {
-    background: linear-gradient(93deg, #7B895D 6.37%, #71824D 38.67%, #3F5A05 77.37%);
-    padding: 20px;
-    border-radius: 10px;
-    width: 300px;
+.modal-contenido, .registerFormContainer {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 25px !important;
+    padding: 40px !important;
+    max-width: 450px !important;
+    width: 90% !important;
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25) !important;
+    position: relative !important;
+    animation: slideUpModal 0.4s ease;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Botón para cerrar */
+@keyframes slideUpModal {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Título del modal */
+.modal-contenido h2, .registerFormContainer h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2.2em;
+    font-weight: 700;
+    margin-bottom: 30px;
+    background: linear-gradient(135deg, #6fbfd1, #9171a8);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
+}
+
+/* Botón de cerrar */
 .cerrar {
-    float: right;
-    font-size: 24px;
-    cursor: pointer;
+    position: absolute !important;
+    top: 20px !important;
+    right: 25px !important;
+    font-size: 30px !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    color: #999 !important;
+    transition: all 0.3s ease !important;
+    z-index: 10001 !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
 }
 
-/* Estilos de los inputs y botones */
-input, button {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    border-radius: 5px;
-    border: 1px solid #cccc;
+.cerrar:hover {
+    color: #ff4444 !important;
+    background: rgba(255, 68, 68, 0.1) !important;
+    transform: scale(1.1) !important;
 }
 
-button {
-    background: #3F5A05;
-    color: white;
-    cursor: pointer;
+/* Inputs del formulario */
+.login-input, .auth-input {
+    width: 100% !important;
+    padding: 18px 20px !important;
+    margin: 10px 0 !important;
+    border: 2px solid rgba(111, 191, 209, 0.2) !important;
+    border-radius: 15px !important;
+    font-size: 16px !important;
+    font-family: 'Outfit', sans-serif !important;
+    background: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(10px) !important;
+    transition: all 0.3s ease !important;
+    box-sizing: border-box !important;
 }
 
-button:hover {
-    background: #7B895D;
+.login-input:focus, .auth-input:focus {
+    outline: none !important;
+    border-color: #6fbfd1 !important;
+    box-shadow: 0 0 0 4px rgba(111, 191, 209, 0.1) !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    transform: translateY(-2px) !important;
 }
 
-.auth-form {
-    transition: opacity 0.3s ease;
+.login-input::placeholder, .auth-input::placeholder {
+    color: #999 !important;
+    font-weight: 400 !important;
 }
 
-
-
-#registerSection {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* Botones del formulario */
+.login-btn, .auth-btn {
+    width: 100% !important;
+    padding: 18px 25px !important;
+    margin: 20px 0 10px 0 !important;
+    border: none !important;
+    border-radius: 15px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    font-family: 'Outfit', sans-serif !important;
+    background: linear-gradient(135deg, #6fbfd1, #9171a8) !important;
+    color: white !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 8px 25px rgba(111, 191, 209, 0.3) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
 }
 
-#registerSection .registerFormContainer {
-    max-width: 350px;
-    background: linear-gradient(93deg, #7B895D 6.37%, #71824D 38.67%, #3F5A05 77.37%);
-    border-radius: 10px;
-    padding: 20px;
-    color: white;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+.login-btn:hover, .auth-btn:hover {
+    background: linear-gradient(135deg, #7dd3d8, #a688b8) !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 12px 35px rgba(111, 191, 209, 0.4) !important;
+}
+
+.login-btn:active, .auth-btn:active {
+    transform: translateY(-1px) !important;
+}
+
+/* Enlaces de cambio entre formularios */
+.auth-switch {
+    margin-top: 20px !important;
+    font-size: 14px !important;
+    color: #666 !important;
+    font-family: 'Outfit', sans-serif !important;
+}
+
+.auth-switch a {
+    color: #6fbfd1 !important;
+    text-decoration: none !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+}
+
+.auth-switch a:hover {
+    color: #9171a8 !important;
+    text-decoration: underline !important;
+}
+
+/* Mensajes de error */
+.error-message, #errorLogin, #errorRegister {
+    color: #ff4444 !important;
+    font-size: 14px !important;
+    margin-top: 10px !important;
+    font-family: 'Outfit', sans-serif !important;
+    font-weight: 500 !important;
+    background: rgba(255, 68, 68, 0.1) !important;
+    padding: 10px !important;
+    border-radius: 8px !important;
+    border: 1px solid rgba(255, 68, 68, 0.2) !important;
+}
+
+/* Inputs con error */
+.login-input.error, .auth-input.error {
+    border-color: #ff4444 !important;
+    box-shadow: 0 0 0 4px rgba(255, 68, 68, 0.1) !important;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+    .barra-menu {
+        gap: 10px;
+        padding: 12px;
+        min-height: auto;
+        justify-content: center;
+    }
+    
+    .imgMenu {
+        height: 80px !important;
+    }
+    
+    .meGusta, .user {
+        width: 45px;
+        height: 45px;
+        padding: 8px;
+    }
+    
+    .meGusta .imagen-corazon, .user .imagen {
+        width: 26px;
+        height: 26px;
+    }
+    
+    .modal-contenido, .registerFormContainer {
+        width: 95% !important;
+        padding: 30px 20px !important;
+        max-height: 95vh !important;
+    }
+    
+    .modal-contenido h2, .registerFormContainer h2 {
+        font-size: 1.8em;
+    }
+    
+    .login-input, .auth-input {
+        padding: 15px 18px !important;
+        font-size: 16px !important;
+    }
+    
+    .login-btn, .auth-btn {
+        padding: 16px 20px !important;
+        font-size: 15px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-contenido h2, .registerFormContainer h2 {
+        font-size: 1.6em;
+        margin-bottom: 20px;
+    }
+    
+    .modal-contenido, .registerFormContainer {
+        padding: 25px 15px !important;
+    }
+}
+
+/* ========== ESTILOS ADICIONALES ========== */
+
+/* Animación sutil para los iconos */
+.login-btn i, .auth-btn i {
+    font-size: 18px;
+    transition: transform 0.3s ease;
+}
+
+.login-btn:hover i, .auth-btn:hover i {
+    transform: scale(1.1);
+}
+
+/* Efecto de carga en botones */
+.login-btn.loading, .auth-btn.loading {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+.login-btn.loading::after, .auth-btn.loading::after {
+    content: '';
+    width: 20px;
+    height: 20px;
+    border: 2px solid transparent;
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-left: 10px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Links generales */
+a {
+    text-decoration: none;
+}
+
+/* Scrollbar personalizada para modales */
+.modal-contenido::-webkit-scrollbar, .registerFormContainer::-webkit-scrollbar {
+    width: 6px;
+}
+
+.modal-contenido::-webkit-scrollbar-track, .registerFormContainer::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+.modal-contenido::-webkit-scrollbar-thumb, .registerFormContainer::-webkit-scrollbar-thumb {
+    background: rgba(111, 191, 209, 0.3);
+    border-radius: 3px;
+}
+
+.modal-contenido::-webkit-scrollbar-thumb:hover, .registerFormContainer::-webkit-scrollbar-thumb:hover {
+    background: rgba(111, 191, 209, 0.5);
 }
